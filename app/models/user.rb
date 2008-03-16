@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   attr_protected :id
 
   def self.authenticate(login, pass)
-    User.find_by_login(login)
+    u = User.find_by_login(login)
+    return u unless u.nil? or u.password != pass
   end
 end
