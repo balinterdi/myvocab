@@ -32,24 +32,28 @@ class WordTest < Test::Unit::TestCase
   end
 
   def test_find_synonyms_no_synonyms
-    synonyms = @w4.find_synonyms.collect(&:name)
+    synonyms = @w4.find_synonyms
     assert_equal([], synonyms)
   end
 
-  def test_find_pairs
-    synonyms = @w1.find_synonyms.collect(&:name)
-    assert_equal(true, synonyms.include?('decline'))
-    assert_equal(true, synonyms.include?('refuser'))
-    assert_equal(false, synonyms.include?('box'))
+  def test_find_synonyms
+    synonyms = @w1.find_synonyms
+    assert_equal(true, synonyms.include?(@w2))
+    assert_equal(true, synonyms.include?(@w3))
+    assert_equal(false, synonyms.include?(@w4))
+    synonyms_names = synonyms.collect(&:name)
+    assert_equal(true, synonyms_names.include?('decline'))
+    assert_equal(true, synonyms_names.include?('refuser'))
+    assert_equal(false, synonyms_names.include?('box'))
   end
 
-  def XXXtest_pair
-    w_en = Word.find_by_name("foray")
-    w_hu = Word.find_by_name("fosztogat")
-    assert ( w_en.pair("hu") == w_hu )
-    assert ( w_hu.pair("en") == w_en )
-    w_en = Word.find_by_name("box")
-    assert ( w_en.pair("hu") === nil )
-  end
+  def test_find_foreign_words
+    foreign_words = @w1.find_foreign_words('hu')
+    assert_equal([], foreign_words)
+    foreign_words = @w1.find_foreign_words('fr')
+    assert_equal(1, foreign_words.length)
+    assert_equal(@w3, foreign_words.first)
+    # foreign_words = @w1.find_foreign_words('en')
 
+  end
 end
