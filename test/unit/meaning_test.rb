@@ -1,10 +1,14 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class MeaningTest < Test::Unit::TestCase
-  # fixtures :meanings
+  fixtures :meanings, :words
 
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def test_meaning_associations
+    @m = Meaning.find(1)
+    word = Word.find(@m.word_id)
+    syn = Word.find(@m.synonym_word_id)
+    assert_equal('refuse', word.name)
+    assert_equal('decline', syn.name)
   end
+
 end

@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
 
   # all fields that should not be updateable from the web should be protected
   attr_protected :id
+
+  def self.authenticate(login, pass)
+    User.find_by_login(login)
+  end
 end
