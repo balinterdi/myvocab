@@ -8,15 +8,25 @@ class Word < ActiveRecord::Base
 
   validates_presence_of :name, :lang
 
-  def find_foreign_words(lang)
+  def find_words_for_lang(language)
+    find_synonyms { |w| w.lang == language }
+  end
+
+  def find_same_lang_synonyms
     find_synonyms { |w| w.lang == lang }
   end
 
-  def find_synonyms(&blk)
-    unless block_given?
-      blk = lambda { true }
-    end
-    synonyms.select(&blk)
+  def find_foreign_synonyms
+    find_synonyms { |w| w.lang != lang }
   end
-  # { |syn| syn.lang == options[:lang] }
+
+  # so if calling protected methods is also not allowed from tests
+  # how do I test them?
+  # protected
+
+  def find_synonyms(&blk)
+    return synonyms unless block_given?
+    return synonyms.select(&blk)
+  end
+
 end

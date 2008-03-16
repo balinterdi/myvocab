@@ -47,13 +47,40 @@ class WordTest < Test::Unit::TestCase
     assert_equal(false, synonyms_names.include?('box'))
   end
 
-  def test_find_foreign_words
-    foreign_words = @w1.find_foreign_words('hu')
-    assert_equal([], foreign_words)
-    foreign_words = @w1.find_foreign_words('fr')
-    assert_equal(1, foreign_words.length)
-    assert_equal(@w3, foreign_words.first)
-    # foreign_words = @w1.find_foreign_words('en')
-
+  def test_find_words_for_lang
+    hu_words = @w1.find_words_for_lang('hu')
+    assert_equal([], hu_words)
+    fr_words = @w1.find_words_for_lang('fr')
+    assert_equal(1, fr_words.length)
+    assert_equal(@w3, fr_words.first)
+    en_words = @w1.find_words_for_lang('en')
+    assert_equal(1, en_words.length)
+    assert_equal(true, en_words.include?(@w2))
   end
+
+  def test_find_same_lang_synonyms_empty
+    assert_equal([], @w4.find_same_lang_synonyms)
+  end
+
+  def test_find_same_lang_synonyms
+    syns = @w1.find_same_lang_synonyms
+    assert_equal(1, syns.length)
+    assert_equal(@w2, syns.first)
+  end
+
+  def test_find_foreign_synonyms
+    syns = @w1.find_foreign_synonyms
+    assert_equal(1, syns.length)
+    assert_equal(@w3, syns.first)
+    assert_equal(false, syns.include?(@w4))
+  end
+
+  def test_find_foreign_synonyms_not_symmetrical
+    # the word - synonym pairs have to be
+    # explicitly given both ways, which is not desired
+    # but it works like this for the moment
+    syns = @w3.find_foreign_synonyms
+    assert_equal([], syns)
+  end
+
 end
