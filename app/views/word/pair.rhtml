@@ -1,0 +1,19 @@
+<%= form_tag(:action => "create_pair")  %>
+<%= fieldset_tag %>
+<%= content_tag("legend", "New word") %>
+<ul>
+  <li>
+  <%= label_tag("English", "word1", method="name") %>
+  <%= input("word1", "name") %>
+  <%= hidden_field("word1", "lang", :value => "en" ) %>
+  </li>
+  <li>
+  <%= label_tag("Hungarian", "word2", method="name") %>
+  <%= input("word2", "name") %>
+  <%= hidden_field("word2", "lang", :value => "hu" ) %>
+  </li>
+</ul>
+
+<%= submit_tag("save".capitalize, :class => "submit_button") %>
+<%= end_fieldset_tag %>
+<%= end_form_tag %>

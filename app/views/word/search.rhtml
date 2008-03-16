@@ -1,0 +1,23 @@
+<p>
+<form name="sform" action="" style="display:inline;">
+<label for="item_name">Word to find</label>
+<%= text_field_tag("query", @params['query'], :size => 10 ) %>
+</form>
+
+<%= image_tag("spinner.gif",
+              :align => "absmiddle",
+              :border => 0,
+              :id => "spinner",
+              :style =>"display: none;" ) %>
+</p>
+
+<%= observe_field 'query',  :frequency => 2,
+         :update => 'table',
+         :before => "Element.show('spinner')",
+         :success => "Element.hide('spinner')",
+         :url => {:action => 'search'},
+         :with => 'query' %>
+
+<div id="table">
+<%= render :partial => "search_result" %>
+</div>

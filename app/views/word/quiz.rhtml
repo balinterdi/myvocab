@@ -1,0 +1,28 @@
+<% form_tag(:action => 'quiz') do -%>
+<div>
+<%= text_field_tag('from_word', @from_word_name) %>
+</div>
+<div>
+<%= text_field_tag('to_word', @to_word_name) %>
+</div>
+
+<% if @quiz_status == :success %>
+<div>
+  <%= 'Great!' %>
+</div>
+<% end %>
+
+<% if @quiz_status == :failed %>
+<div>
+  <%= 'You missed!' %>
+</div>
+<% end %>
+
+<% unless @good_answer.nil? %>
+<div>
+  The solution was <%= @good_answer.name %>
+</div>
+<% end %>
+
+<%= submit_tag("Go") %>
+<% end -%>

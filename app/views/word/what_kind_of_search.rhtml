@@ -1,0 +1,5 @@
+<% if @results.empty? %>
+  '<%=h @phrase %>' not found!
+<% else %>
+  '<%=h @phrase %>' found <b><%= @number_match %></b> time(s)!
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  name:
+  login: alice
+  password: ecila
+  email: alice@myvocab.com
+two:
+  id: 2
+  name:
+  login: bob
+  password: obb
+  email: b@silentbob.com
+three:
+  id: 3
+  name: Cedric Fontainebleu
+  login: cedric
+  password: cedr
+  email: cedric@iledefrance.fr

@@ -1,0 +1,9 @@
+<% form_tag(:controller => 'session', :action => 'set') do -%>
+<div>
+From: <%= text_field_tag('from_lang', session[:from_lang]) %>
+</div>
+<div>
+To: <%= text_field_tag('to_lang', session[:to_lang]) %>
+</div>
+<%= submit_tag("Save session values") %>
+<% end -%>

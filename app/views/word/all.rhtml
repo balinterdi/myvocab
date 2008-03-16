@@ -1,0 +1,18 @@
+<%= content_tag :h2, "All words" %>
+<div id="word-list" class="word_list">
+<ul>
+<% @word_items.each do |wp| %>
+  <li>
+    <div class="word_marker">
+      <%= content_tag :div, wp[@from_lang].name, :class => "dict_left" %>
+      <%= content_tag :div, wp[@to_lang].name , :class => "dict_right" %>
+      <div class="actions">
+        <%= link_to "edit", :controller => "word", :action => "edit", :id => wp[@from_lang].id %>
+        <%= link_to "delete", :controller => "word", :action => "delete" %>
+      </div>
+    </div>
+  </li>
+<% end %>
+</ul>
+<%= pagination_links(@word_pages) %>
+</div>

@@ -1,0 +1,14 @@
+<% if @words.length == 0 %>
+  <p>No items found...</p>
+<% else %>
+<table>
+<thead>Word</thead>
+<tbody>
+    <% @words.each do |w| %>
+    <tr class="<%= cycle("even","odd") %>">
+      <td><%= w.name %></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+<% end %>

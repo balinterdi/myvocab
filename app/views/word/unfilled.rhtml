@@ -1,0 +1,14 @@
+<%= form_tag(:action => "save_unfilled")  %>
+<%= label_tag("English", "word", method="name") %>-
+<%= label_tag("Hungarian", "w_to", method="name") %>
+<%= tag("br") %>
+<% @unfilled_words.each do |@w_from| %>
+  <%= hidden_field("w_from", "id") %>
+  <%= input("w_from", "name") %>
+  <% @w_to = Word.new %>
+  <%= input("w_to", "name") %>
+  <%= tag("br") %>
+<% end %>
+
+<%= submit_tag("submit".capitalize) %>
+<%= end_form_tag %>

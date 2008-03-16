@@ -1,0 +1,17 @@
+<%= form_tag(:action => "create")  %>
+<!-- <%= all_input_tags (@word, "word", {}) %> -->
+<!-- <%= text_field_tag("word", "name") %> -->
+
+<!--
+the label_tag, input pair does the same
+as the all_input_tags for each element
+-->
+<%= fieldset_tag %>
+<%= content_tag("legend", "New word") %>
+<%= label_tag("Name", "word", method="name") %>
+<%= input("word", "name") %>
+<%= label_tag("Language", "word", method="lang") %>
+<%= language_dropdown("word", "name") %>
+<%= submit_tag ("create word".capitalize) %>
+<%= end_fieldset_tag %>
+<%= end_form_tag %>

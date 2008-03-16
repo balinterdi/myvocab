@@ -1,0 +1,896 @@
+  [4;36;1mSQL (0.000073)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000115)[0m   [0mROLLBACK[0m
+  [4;35;1mSQL (0.000051)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002817)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.001012)[0m   [0mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;36;1mWord Load (0.000338)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;35;1mWord Load (0.000462)[0m   [0mSELECT * FROM words WHERE (words."lang" = 'hu' AND words."meaning_id" = 1) LIMIT 1[0m
+  [4;36;1mWord Load (0.000378)[0m   [0;1mSELECT * FROM words WHERE (words."lang" = 'en' AND words."meaning_id" = 1) LIMIT 1[0m
+  [4;35;1mWord Load (0.000330)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000350)[0m   [0;1mSELECT * FROM words WHERE (words."lang" = 'hu' AND words."meaning_id" = 43554) LIMIT 1[0m
+  [4;35;1mSQL (0.000158)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000057)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000132)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000051)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000104)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000050)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000097)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000080)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000116)[0m   [0mROLLBACK[0m
+  [4;35;1mSQL (0.000054)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002222)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.000955)[0m   [0mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;36;1mWord Load (0.000345)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;35;1mWord Load (0.000437)[0m   [0mSELECT * FROM words WHERE (words."lang" = 'hu' AND words."meaning_id" = 1) LIMIT 1[0m
+  [4;36;1mWord Load (0.000390)[0m   [0;1mSELECT * FROM words WHERE (words."lang" = 'en' AND words."meaning_id" = 1) LIMIT 1[0m
+  [4;35;1mWord Load (0.000334)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000352)[0m   [0;1mSELECT * FROM words WHERE (words."lang" = 'hu' AND words."meaning_id" = 43554) LIMIT 1[0m
+  [4;35;1mSQL (0.000153)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000053)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000129)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000054)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000110)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000051)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000098)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000153)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000263)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000080)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000110)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000096)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002704)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mWord Load (0.000921)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;35;1mWord Load (0.000333)[0m   [0mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;36;1mSQL (0.000159)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000053)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000135)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000052)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000107)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000050)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000098)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000157)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000223)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000429)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005345)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mWord Load (0.003046)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;35;1mWord Load (0.000887)[0m   [0mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;36;1mSQL (0.000328)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000130)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000291)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000272)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000128)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000252)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000155)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000220)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005893)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mWord Load (0.002168)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;35;1mWord Load (0.000798)[0m   [0mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;36;1mSQL (0.000344)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000133)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000255)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000129)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000221)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000126)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000209)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000899)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000273)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000160)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.007482)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.001630)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000545)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000350)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000138)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000263)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003488)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002520)[0m   [0mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;36;1mWord Load (0.000811)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;35;1mSQL (0.000778)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000259)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000225)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000149)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000240)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000185)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000217)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000131)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005626)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000777)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000475)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000335)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000144)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000257)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000129)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003668)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002196)[0m   [0mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;36;1mWord Load (0.012589)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;35;1mWord Load (0.000000)[0m   [0mPGError: ERROR: column words.meaning does not exist
+: SELECT * FROM words WHERE (words."lang" = 'hu' AND words."meaning" IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000129)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000809)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000139)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000271)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000198)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000255)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000315)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000098)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.003721)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000481)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000299)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000219)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000080)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000153)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000077)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001462)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.001345)[0m   [0mSELECT * FROM words WHERE (words."name" = 'foray') LIMIT 1[0m
+  [4;36;1mWord Load (0.000508)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'fosztogat') LIMIT 1[0m
+  [4;35;1mSQL (0.000255)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000082)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000181)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000079)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000163)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000078)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000158)[0m   [0mROLLBACK[0m
+  [4;35;1mSQL (0.000254)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000070)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002238)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000347)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000181)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000156)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000053)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000099)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000127)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.003296)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.000295)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000556)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000240)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000576)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000147)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000181)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000074)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002310)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000359)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000189)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000162)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000056)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000232)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000052)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000980)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.000195)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000057)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000111)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000051)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000097)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000141)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000108)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000061)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002259)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000345)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000183)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000162)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000055)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000099)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000050)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001157)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mSQL (0.000178)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000055)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000107)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000051)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000097)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000107)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000172)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005406)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000792)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000493)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000145)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000261)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000148)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002445)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002194)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000934)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000851)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001154)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000321)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000904)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001149)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000890)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000848)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000387)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000136)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000945)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000852)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000888)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000828)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000427)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000884)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.002329)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000898)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000979)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000317)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000155)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000117)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000169)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005533)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000755)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000518)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000132)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000296)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000135)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002520)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002621)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000873)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000862)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000850)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000331)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000891)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001189)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000858)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001744)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000468)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000931)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001197)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000869)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.002075)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000319)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000913)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000859)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000860)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000849)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000365)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000112)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000095)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002587)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000462)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000193)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000182)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000056)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000726)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000054)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001239)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.000924)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000343)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000323)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000489)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000175)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000061)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000475)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000348)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000328)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000316)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000155)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000055)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000520)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000346)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000323)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000332)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000177)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000056)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000386)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000369)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000322)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001551)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000174)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000108)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000168)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005685)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000777)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.001716)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000133)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000256)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000159)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002451)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002198)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000827)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000795)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000780)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000280)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000864)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000796)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000836)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000803)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000285)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000864)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000799)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000789)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001289)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000259)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000837)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000797)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.001960)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000811)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000263)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000108)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000169)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005772)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000723)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000444)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000293)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000132)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000130)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002837)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002196)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000850)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000870)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000875)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000590)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.001055)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000887)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000840)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000830)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000304)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000876)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000843)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000964)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000845)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000312)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000893)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000886)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000839)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000926)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000349)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000882)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001115)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000846)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000962)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000295)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.002315)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000156)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000169)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.006882)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000789)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000530)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000295)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000464)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000222)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000167)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002733)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002200)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000841)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000838)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000831)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000468)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000141)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.001046)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000913)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000860)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000834)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000306)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000872)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000843)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000843)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000900)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000316)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000900)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.002126)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000910)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000839)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000324)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000135)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000881)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000841)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000901)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000832)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000300)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000151)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000182)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000178)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005474)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000904)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000474)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000330)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000133)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000262)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000149)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002479)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002149)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000817)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000809)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000794)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.001897)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000419)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000139)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000960)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000806)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000806)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000791)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mSQL (0.000264)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000833)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.001198)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000820)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000813)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mSQL (0.000286)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000137)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000929)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000804)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.001038)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000818)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mSQL (0.001176)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000137)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000873)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000806)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000801)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000817)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mSQL (0.000256)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000486)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000122)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000172)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005497)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000780)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000490)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000332)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000134)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001470)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000131)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002352)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002239)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001181)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000846)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001210)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.002061)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000469)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000138)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.001182)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000850)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.001849)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000858)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000907)[0m   [0;1mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 5)) [0m
+  [4;35;1mSQL (0.000350)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000181)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.001038)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000840)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000887)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000856)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000365)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000135)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.001003)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000839)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000837)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000908)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000459)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000921)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000846)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000871)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001056)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000293)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000175)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000170)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005834)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000916)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000438)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000291)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000139)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000220)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000163)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002441)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002553)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000867)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000855)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000838)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.002016)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000470)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000137)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.001007)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000854)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.001000)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000840)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.001118)[0m   [0;1mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 5)) [0m
+  [4;35;1mSQL (0.000311)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000131)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.002127)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000877)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000922)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000866)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000345)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000961)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000843)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000871)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000834)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000317)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000882)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000839)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000860)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001150)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000287)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000149)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000096)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000170)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.005917)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000678)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000457)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000295)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000134)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000216)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000163)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.002449)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.002278)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000859)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000926)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000843)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.001970)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000500)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000141)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.001024)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000869)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000867)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000994)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000835)[0m   [0;1mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 5)) [0m
+  [4;35;1mSQL (0.000309)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000895)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000842)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000885)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000954)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000338)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000136)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000933)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.001051)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000918)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000838)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000317)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000135)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000899)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000900)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000848)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.001766)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000314)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000109)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000074)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002616)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000368)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000196)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000162)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000056)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000101)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000053)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000982)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.000931)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000316)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000306)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000301)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.000552)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000187)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000057)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000397)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000305)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000303)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000302)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000437)[0m   [0;1mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 5)) [0m
+  [4;35;1mSQL (0.000119)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000054)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000337)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000302)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000303)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000298)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000131)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000053)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000342)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000303)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000301)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000298)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000107)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000054)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000341)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000303)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000303)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000299)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000103)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000249)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000077)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.002496)[0m   [0m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'users'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mUser Load (0.000415)[0m   [0;1mSELECT * FROM users WHERE (users.login IS NULL) LIMIT 1[0m
+  [4;35;1mUser Load (0.000193)[0m   [0mSELECT * FROM users WHERE (users.email IS NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000271)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000054)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000106)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000073)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.001081)[0m   [0;1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'words'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;35;1mWord Load (0.000979)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000336)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000323)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000386)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mWord Load (0.000632)[0m   [0mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 6)) [0m
+  [4;36;1mSQL (0.000191)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000093)[0m   [0mBEGIN[0m
+  [4;36;1mWord Load (0.000526)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;35;1mWord Load (0.000329)[0m   [0mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;36;1mWord Load (0.000319)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;35;1mWord Load (0.000503)[0m   [0mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;36;1mWord Load (0.000383)[0m   [0;1mSELECT words.* FROM words INNER JOIN meanings ON words.id = meanings.synonym_word_id WHERE ((meanings.word_id = 5)) [0m
+  [4;35;1mSQL (0.000208)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000053)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000361)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000326)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000360)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000371)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000132)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000054)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000353)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000309)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000428)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000306)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000116)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000052)[0m   [0;1mBEGIN[0m
+  [4;35;1mWord Load (0.000336)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuse') LIMIT 1[0m
+  [4;36;1mWord Load (0.000333)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'decline') LIMIT 1[0m
+  [4;35;1mWord Load (0.000300)[0m   [0mSELECT * FROM words WHERE (words."name" = 'refuser') LIMIT 1[0m
+  [4;36;1mWord Load (0.000298)[0m   [0;1mSELECT * FROM words WHERE (words."name" = 'box') LIMIT 1[0m
+  [4;35;1mSQL (0.000108)[0m   [0mROLLBACK[0m
