@@ -3,17 +3,23 @@ one:
   id: 1
   name:
   login: alice
-  password: ecila
+  salt: abcdef
+  ##password: ecila
   email: alice@myvocab.com
+  hashed_password: 45fodigofdgfd
 two:
   id: 2
   name:
   login: bob
-  password: obb
+  salt: abcdef
+  ##password: obb
   email: b@silentbob.com
+  hashed_password: 45fodigofdgfd
 three:
   id: 3
   name: Cedric Fontainebleu
   login: cedric
-  password: cedr
+  salt: abcdef
+  ##password: cedr
   email: cedric@iledefrance.fr
+  hashed_password: 45fodigofdgfd
