@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < Test::Unit::TestCase
-  fixtures :users
 
   def setup
     @user = User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess')

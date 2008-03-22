@@ -1,14 +1,20 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class MeaningTest < Test::Unit::TestCase
-  fixtures :meanings, :words
+
+  def setup
+    @refuse = Word.new( :name => 'refuse', :lang => 'en' )
+    @decline = Word.new( :name => 'decline', :lang => 'en' )
+    @refuser = Word.new( :name => 'refuser', :lang => 'fr' )
+    # @refuse.build_synonym_ids(@decline, @refuser) # that does not work
+    @refuse.stubs(:synonyms).returns([@decline, @refuser])
+    # @refuse_meaning = Meaning.new
+  end
 
   def test_meaning_associations
-    @m = Meaning.find(1)
-    word = Word.find(@m.word_id)
-    syn = Word.find(@m.synonym_word_id)
-    assert_equal('refuse', word.name)
-    assert_equal('decline', syn.name)
+    syns = @refuse.synonyms
+    assert(syns.include?(@decline))
+    assert(syns.include?(@refuser))
   end
 
 end

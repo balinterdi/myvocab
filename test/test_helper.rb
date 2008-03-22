@@ -1,6 +1,8 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
+# helps to build mocks (stubs), see railscast '060_testing_without_fixtures.mov' on railscasts.com
+require 'mocha'
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
