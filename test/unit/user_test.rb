@@ -64,8 +64,8 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_random_string
-    assert_equal(0, User.random_string(7) =~ /^\w{7}$/)
-    assert_equal(0, User.random_string(10) =~ /^\w{10}$/)
+    assert_match(/^\w{7}$/, User.random_string(7))
+    assert_match(/^\w{10}$/, User.random_string(10))
   end
 
   def test_set_password
