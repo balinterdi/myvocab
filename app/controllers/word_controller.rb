@@ -1,5 +1,4 @@
 class WordController < ApplicationController
-  scaffold :word
   layout "standard-layout"
 
   def new
@@ -37,13 +36,13 @@ class WordController < ApplicationController
       # the db row representing it
       # has to be created by hand
       # @m = Meaning.new
-      meaning_id = sql.insert("INSERT INTO meanings values ( nextval('meanings_id_seq') )")
-      sql.commit_db_transaction
-      @w1.update_attribute(:meaning_id, meaning_id)
-      @w2.update_attribute(:meaning_id, meaning_id)
+      # meaning_id = sql.insert("INSERT INTO meanings values ( nextval('meanings_id_seq') )")
+      # sql.commit_db_transaction
+      # @w1.update_attribute(:meaning_id, meaning_id)
+      # @w2.update_attribute(:meaning_id, meaning_id)
       flash[:notice] = "Word saved"
     end
-    redirect_to :action => "all"
+    redirect_to :action => "pair" # "all"
   end
 
   def translate
@@ -98,7 +97,7 @@ class WordController < ApplicationController
     item_count = count_words({:lang => @from_lang})
     @word_pages = Paginator.new(self, item_count, items_per_page, page)
     # @word_items = find_words(items_per_page, offset)
-    @word_items = find_word_pairs(@from_lang, @to_lang, items_per_page, offset)
+    @word_items = Word.find(:all) # find_word_pairs(@from_lang, @to_lang, items_per_page, offset)
   end
 
   def search

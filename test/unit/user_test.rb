@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
 
   def setup
-    @user = User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess')
+    @user = User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess', :password_confirmation => 'passtoguess')
   end
 
   def test_should_require_login
@@ -18,7 +18,7 @@ class UserTest < Test::Unit::TestCase
 
   def test_login_length_good
     u = User.create(:login => 'bryan')
-    assert_equal(nil, u.errors.on(:login))
+    assert_nil u.errors.on(:login)
   end
 
   def test_should_require_password
@@ -33,7 +33,7 @@ class UserTest < Test::Unit::TestCase
 
   def test_password_length_good
     u = User.create(:password => 'passtoguess')
-    assert_equal(nil, u.errors.on(:password))
+    assert_nil u.errors.on(:password)
   end
 
   def test_should_require_email
@@ -53,14 +53,14 @@ class UserTest < Test::Unit::TestCase
 
   def test_email_format_correct
     u = User.create(:email => 'bryan@company.com')
-    assert_equal(nil, u.errors.on(:email))
+    assert_nil u.errors.on(:email)
   end
 
   def test_email_unicity
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
-    assert_equal(nil, u.errors.on(:email))
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
-    assert (u.errors.on(:email))
+    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    assert_nil  u.errors.on(:email)
+    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    assert u.errors.on(:email)
   end
 
   def test_random_string
@@ -71,29 +71,30 @@ class UserTest < Test::Unit::TestCase
   def test_set_password
     # passing :password => 'xxx' calls the password= method
     u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
+    assert u.errors.on(:password_confirmation)
+    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
     #FIXME: there is an error but the user is saved nonetheless
     # puts "Errors: #{u.errors.inspect}"
-    # puts "User has salt? : #{u.salt?} User by login: #{User.find_by_login('cecile').inspect}"
-    assert_equal(u, User.authenticate('cecile', 'cecilepass'))
+    assert_equal u, User.authenticate('cecile', 'cecilepass')
   end
 
   def test_login_unicity
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
-    assert_equal(nil, u.errors.on(:login))
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
-    assert (u.errors.on(:login))
+    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    assert_nil u.errors.on(:login)
+    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    assert u.errors.on(:login)
   end
 
   def test_authenticate_no_such_login
-    assert_equal(nil, User.authenticate('sebastien', 'passtoguess'), 'no such login')
+    assert_nil User.authenticate('sebastien', 'passtoguess'), 'no such login'
   end
 
   def test_authenticate_bad_password
-    assert_equal(nil, User.authenticate('john', 'qwerty'), 'bad password')
+    assert_nil User.authenticate('john', 'qwerty'), 'bad password'
   end
 
   def test_authenticate_success
-    assert_equal(@user, User.authenticate('john', 'passtoguess'), 'successful user authentication')
+    assert_equal @user, User.authenticate('john', 'passtoguess'), 'successful user authentication'
   end
 
 end
