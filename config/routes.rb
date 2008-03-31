@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'register', :controller => 'user', :action => 'register'
   map.connect 'login', :controller => 'user', :action => 'login'
+  map.connect 'logout', :controller => 'user', :action => 'logout'
 
   map.connect ':almafa', :controller => 'word', :action => 'kortefa', :filter => 'almafa'
   # Install the default route as the lowest priority.
