@@ -1,5 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 require 'user_controller'
+require 'application'
 
 # Re-raise errors caught by the controller.
 class UserController; def rescue_action(e) raise e end; end
@@ -51,7 +52,7 @@ class UserControllerTest < Test::Unit::TestCase
 
   def test_failed_register_does_not_set_session
     post :register, :user => @failing_register_opts_no_password
-    assert session[:user].blank?
+    assert @controller.current_user_id.blank?
   end
 
   def test_successful_register
@@ -68,18 +69,18 @@ class UserControllerTest < Test::Unit::TestCase
 
   def test_successful_register_sets_session
     post :register, :user => @successful_register_opts
-    assert !session[:user].blank?
-    assert_equal User.find_by_login(@successful_register_opts[:login]).id, session[:user]
+    assert !@controller.current_user_id.blank?
+    assert_equal User.find_by_login(@successful_register_opts[:login]).id, @controller.current_user_id
   end
 
   def test_login_should_fail_if_nonexistent_user
     post :login, :user => @failing_login_opts_nonexistent_user
-    assert session[:user].blank?
+    assert @controller.current_user_id.blank?
   end
 
   def test_login_should_fail_if_bad_password
     post :login, :user => @failing_login_opts_bad_password
-    assert session[:user].blank?
+    assert @controller.current_user_id.blank?
   end
 
   def test_login_fails_renders_login
@@ -103,7 +104,7 @@ class UserControllerTest < Test::Unit::TestCase
     #FIXME: this stubbing should be refactored
     user = stub_successful_login
     post :login, :user => @successful_login_opts
-    assert_equal user.id, session[:user]
+    assert_equal user.id, @controller.current_user_id
   end
 
   def test_successful_login_redirects_to_home_page
@@ -122,7 +123,14 @@ class UserControllerTest < Test::Unit::TestCase
     user = stub_successful_login
     post :login, :user => @successful_login_opts
     get :logout
-    assert_nil session[:user]
+    assert_nil @controller.current_user_id
+  end
+
+  def test_logout_redirects_to_home_page
+    user = stub_successful_login
+    post :login, :user => @successful_login_opts
+    get :logout
+    assert_redirected_to home_url
   end
 
 end

@@ -27,6 +27,7 @@ class UserController < ApplicationController
 
   def logout
     session[:user] = nil
+    redirect_to home_url
   end
 
 end

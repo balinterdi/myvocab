@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_myvocab_session_id'
 
+  def current_user_id
+    session[:user]
+  end
+
   def get_from_lang
     session[:from_lang].nil? ? 'en' : session[:from_lang]
   end
