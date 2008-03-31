@@ -17,6 +17,10 @@ ActionController::Routing::Routes.draw do |map|
   # instead of a file named 'wsdl'
   map.connect ':controller/service.wsdl', :action => 'wsdl'
 
+  #FIXME: map.resources auto-generates restful helpers, e.g edit_project_path, new_project_path, etc.
+
+  map.register 'register', :controller => 'user', :action => 'register'
+  map.home 'index', :controller => 'word', :action => 'list'
 
   map.connect 'register', :controller => 'user', :action => 'register'
   map.connect 'login', :controller => 'user', :action => 'login'

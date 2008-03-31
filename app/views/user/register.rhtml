@@ -1,0 +1,9 @@
+<h1>Register</h1>
+<% form_tag :action => 'register' do %>
+<%= input("user", "name") %>
+<%= input("user", "login") %>
+<%= input("user", "email") %>
+<%= password_field "user", "password" %>
+<%= password_field "user", "password_confirmation" %>
+<%= submit_tag("submit".capitalize, :class => "submit_button") %>
+<% end -%>
