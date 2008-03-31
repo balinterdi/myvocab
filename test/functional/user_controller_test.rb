@@ -42,9 +42,9 @@ class UserControllerTest < Test::Unit::TestCase
 
   def test_failed_register
     post :register, :user => @failing_register_opts_no_password
-    assert_not_nil flash[:notice]
+    assert_not_nil flash[:error]
     post :register, :user => @failing_register_opts_badly_repeated_password
-    assert_not_nil flash[:notice]
+    assert_not_nil flash[:error]
     assert_response :success
     assert_template 'register'
   end
@@ -58,7 +58,7 @@ class UserControllerTest < Test::Unit::TestCase
     post :register, :user => { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'bryanpass' }
     #FIXME: test if successful registration message is displayed,
     # but without duplicating it (once defining it in the test and once in the view, e.g)
-    assert_nil flash[:notice]
+    assert_nil flash[:error]
   end
 
   def test_successful_register_redirects_to_home
@@ -73,24 +73,54 @@ class UserControllerTest < Test::Unit::TestCase
   end
 
   def test_login_should_fail_if_nonexistent_user
-    post :login, :user => @failing_login_opts
+    post :login, :user => @failing_login_opts_nonexistent_user
     assert session[:user].blank?
   end
 
   def test_login_should_fail_if_bad_password
+    post :login, :user => @failing_login_opts_bad_password
+    assert session[:user].blank?
   end
 
-  def test_login_fails_redirect_to_login
+  def test_login_fails_renders_login
+    post :login, :user => @failing_login_opts_bad_password
+    assert_response :success
+    assert_template 'login'
+  end
+
+  def test_login_fails_renders_flash_error
+    post :login, :user => @failing_login_opts_bad_password
+    assert !flash[:error].blank?
   end
 
   def test_successful_login_sets_session
+    #FIXME: this stubbing should be refactored
     user = User.create(@successful_register_opts)
     User.stubs(:authenticate).returns(user)
     post :login, :user => @successful_login_opts
-    assert !session[:user].blank?
+    assert_equal user.id, session[:user]
   end
 
   def test_successful_login_redirects_to_home_page
+    user = User.create(@successful_register_opts)
+    User.stubs(:authenticate).returns(user)
+    post :login, :user => @successful_login_opts
+    assert_redirected_to home_url
+  end
+
+  def test_successful_login_no_error_message
+    user = User.create(@successful_register_opts)
+    User.stubs(:authenticate).returns(user)
+    post :login, :user => @successful_login_opts
+    assert flash[:error].blank?
+  end
+
+  def test_logout_deletes_user_session
+    user = User.create(@successful_register_opts)
+    User.stubs(:authenticate).returns(user)
+    post :login, :user => @successful_login_opts
+    get :logout
+    assert_nil session[:user]
   end
 
 end

@@ -4,11 +4,11 @@ class UserController < ApplicationController
   def register
     @user = User.new(params[:user])
     if request.post?
-      unless @user.save
-        flash[:notice] = 'please correct the indicated errors'
-      else
+      if @user.save
         session[:user] = @user.id
         redirect_to home_url
+      else
+        flash[:error] = 'please correct the indicated errors'
       end
     end
   end
@@ -16,10 +16,17 @@ class UserController < ApplicationController
   def login
     if request.post?
       @user = User.authenticate(params[:login], params[:password])
-      session[:user] = 'xxx' if @user
+      if @user
+        session[:user] = @user.id
+        redirect_to home_url
+      else
+        flash[:error] = 'Bad username or password'
+      end
     end
   end
 
   def logout
+    session[:user] = nil
   end
+
 end
