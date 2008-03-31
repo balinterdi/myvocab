@@ -93,31 +93,33 @@ class UserControllerTest < Test::Unit::TestCase
     assert !flash[:error].blank?
   end
 
-  def test_successful_login_sets_session
-    #FIXME: this stubbing should be refactored
+  def stub_successful_login
     user = User.create(@successful_register_opts)
     User.stubs(:authenticate).returns(user)
+    return user
+  end
+
+  def test_successful_login_sets_session
+    #FIXME: this stubbing should be refactored
+    user = stub_successful_login
     post :login, :user => @successful_login_opts
     assert_equal user.id, session[:user]
   end
 
   def test_successful_login_redirects_to_home_page
-    user = User.create(@successful_register_opts)
-    User.stubs(:authenticate).returns(user)
+    user = stub_successful_login
     post :login, :user => @successful_login_opts
     assert_redirected_to home_url
   end
 
   def test_successful_login_no_error_message
-    user = User.create(@successful_register_opts)
-    User.stubs(:authenticate).returns(user)
+    user = stub_successful_login
     post :login, :user => @successful_login_opts
     assert flash[:error].blank?
   end
 
   def test_logout_deletes_user_session
-    user = User.create(@successful_register_opts)
-    User.stubs(:authenticate).returns(user)
+    user = stub_successful_login
     post :login, :user => @successful_login_opts
     get :logout
     assert_nil session[:user]
