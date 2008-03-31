@@ -6,11 +6,18 @@ class UserController < ApplicationController
     if request.post?
       unless @user.save
         flash[:notice] = 'please correct the indicated errors'
+      else
+        session[:user] = @user.id
+        redirect_to home_url
       end
     end
   end
 
   def login
+    if request.post?
+      @user = User.authenticate(params[:login], params[:password])
+      session[:user] = 'xxx' if @user
+    end
   end
 
   def logout

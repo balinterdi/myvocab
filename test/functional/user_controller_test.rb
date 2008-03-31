@@ -9,6 +9,14 @@ class UserControllerTest < Test::Unit::TestCase
     @controller = UserController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
+
+    @successful_register_opts = { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'bryanpass' }
+    @failing_register_opts_no_password = { :login => 'bryan', :email => 'bryan@bryan.com' }
+    @failing_register_opts_badly_repeated_password = { :login => 'bryan', :email => 'bryan@bryan.com', :password_confirmation => 'xxxbryanpass' }
+
+    @successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
+    @failing_login_opts_nonexistent_user = { :login => 'bryan_the_rabbit', :password => 'bryanpass' }
+    @failing_login_opts_bad_password = { :login => 'bryan', :password => 'xxxbryanpass' }
   end
 
   # see http://manuals.rubyonrails.com/read/chapter/28
@@ -16,6 +24,7 @@ class UserControllerTest < Test::Unit::TestCase
     get :register
     assert_response :success
     assert flash.blank?
+    # tests if @user is set in the controller
     assert_not_nil assigns['user'], "User is not created"
     assert_template 'register'
     #FIXME: maybe remove duplication of :tag => 'form' with
@@ -32,18 +41,56 @@ class UserControllerTest < Test::Unit::TestCase
   end
 
   def test_failed_register
-    post :register, :user => { :login => 'bryan', :email => 'bryan@bryan.com' }
+    post :register, :user => @failing_register_opts_no_password
     assert_not_nil flash[:notice]
-    post :register, :user => { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'xxxbryanpass' }
+    post :register, :user => @failing_register_opts_badly_repeated_password
     assert_not_nil flash[:notice]
+    assert_response :success
+    assert_template 'register'
+  end
+
+  def test_failed_register_does_not_set_session
+    post :register, :user => @failing_register_opts_no_password
+    assert session[:user].blank?
+  end
+
+  def test_successful_register
     post :register, :user => { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'bryanpass' }
+    #FIXME: test if successful registration message is displayed,
+    # but without duplicating it (once defining it in the test and once in the view, e.g)
     assert_nil flash[:notice]
-    # assert_redirected_to :controller => :user, :action => 'register'
   end
 
-  def test_successful_register_redirects_to_home_page
+  def test_successful_register_redirects_to_home
+    post :register, :user => @successful_register_opts
+    assert_redirected_to home_url
   end
 
+  def test_successful_register_sets_session
+    post :register, :user => @successful_register_opts
+    assert !session[:user].blank?
+    assert_equal User.find_by_login(@successful_register_opts[:login]).id, session[:user]
+  end
 
+  def test_login_should_fail_if_nonexistent_user
+    post :login, :user => @failing_login_opts
+    assert session[:user].blank?
+  end
+
+  def test_login_should_fail_if_bad_password
+  end
+
+  def test_login_fails_redirect_to_login
+  end
+
+  def test_successful_login_sets_session
+    user = User.create(@successful_register_opts)
+    User.stubs(:authenticate).returns(user)
+    post :login, :user => @successful_login_opts
+    assert !session[:user].blank?
+  end
+
+  def test_successful_login_redirects_to_home_page
+  end
 
 end

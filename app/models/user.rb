@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, pass)
     u = User.find_by_login(login)
-    return u unless u.nil? or self.encrypt(pass, u.salt) != u.hashed_password
+    return u unless u.nil? || self.encrypt(pass, u.salt) != u.hashed_password
   end
 
 end
