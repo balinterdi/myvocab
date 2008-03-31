@@ -5,6 +5,10 @@ class WordController < ApplicationController
     @word = Word.new
   end
 
+  def kortefa
+    raise params.inspect
+  end
+
   def create
     sql = ActiveRecord::Base.connection()
     word_id = params[:word]
