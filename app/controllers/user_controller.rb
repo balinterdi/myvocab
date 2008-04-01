@@ -1,5 +1,10 @@
 class UserController < ApplicationController
   layout "standard-layout"
+  before_filter :check_authentication, :except => [:register, :login]
+
+  def check_authentication
+    redirect_to login_url unless session[:user]
+  end
 
   def register
     @user = User.new(params[:user])
@@ -28,6 +33,9 @@ class UserController < ApplicationController
   def logout
     session[:user] = nil
     redirect_to home_url
+  end
+
+  def edit
   end
 
 end

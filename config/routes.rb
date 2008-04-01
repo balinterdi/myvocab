@@ -19,8 +19,10 @@ ActionController::Routing::Routes.draw do |map|
 
   #FIXME: map.resources auto-generates restful helpers, e.g edit_project_path, new_project_path, etc.
 
+  # named routes
   map.register 'register', :controller => 'user', :action => 'register'
   map.home 'index', :controller => 'word', :action => 'list'
+  map.login 'login', :controller => 'user', :action => 'login'
 
   map.connect 'register', :controller => 'user', :action => 'register'
   map.connect 'login', :controller => 'user', :action => 'login'

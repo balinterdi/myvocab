@@ -133,4 +133,27 @@ class UserControllerTest < Test::Unit::TestCase
     assert_redirected_to home_url
   end
 
+  def test_redirect_to_login_if_edit_not_logged_in
+    get :edit
+    assert_redirected_to login_url
+  end
+
+  def test_no_auth_needed_for_register
+    get :register
+    assert_template 'register'
+    assert_response :success
+  end
+
+  def test_no_auth_needed_for_login
+    get :login
+    assert_template 'login'
+    assert_response :success
+  end
+
+  def test_check_authentication_when_logged_in
+    user = stub_successful_login
+    post :login, :user => @successful_login_opts
+    assert_nil @controller.check_authentication
+  end
+
 end

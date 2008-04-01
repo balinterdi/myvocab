@@ -17,7 +17,8 @@ class RoutesTest < ActionController::IntegrationTest
     assert_equal "/logout", url_for(opts.merge(:only_path => true))
 
     assert_not_nil register_url
-    assert_not_nil home_path
+    assert_not_nil home_url
+    assert_not_nil login_url
 
   end
 
