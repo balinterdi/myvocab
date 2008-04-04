@@ -2,10 +2,6 @@ class UserController < ApplicationController
   layout "standard-layout"
   before_filter :check_authentication, :except => [:register, :login]
 
-  def check_authentication
-    redirect_to login_url unless session[:user]
-  end
-
   def register
     @user = User.new(params[:user])
     if request.post?

@@ -5,24 +5,7 @@ class WordController < ApplicationController
     @word = Word.new
   end
 
-  def kortefa
-    raise params.inspect
-  end
-
   def create
-    sql = ActiveRecord::Base.connection()
-    word_id = params[:word]
-    @w = Word.new(word_id)
-    if @w.save
-      # since Meaning is totally empty
-      # the db row representing it
-      # has to be created by hand
-      # @m = Meaning.new
-      meaning_id = sql.insert("INSERT INTO meanings values ( nextval('meanings_id_seq') )")
-      sql.commit_db_transaction
-      @w.update_attribute(:meaning_id, meaning_id)
-    end
-    redirect_to :action => 'list'
   end
 
   def pair

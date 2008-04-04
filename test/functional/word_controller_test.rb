@@ -10,6 +10,20 @@ class WordControllerTest < Test::Unit::TestCase
     @controller = WordController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
+
+    @failed_word_no_name = { :name => "", :lang => "en" }
+    @failed_word_no_lang = { :name => "decline", :lang => "" }
+  end
+
+  def test_get_new_page
+    get :new
+    assert_response :success
+    assert_template 'new'
+  end
+
+  def test_failed_create_should_render_new
+    post :create, :word => @failed_word_no_name
+    assert_template 'new'
   end
 
   def test_should_show_pair
