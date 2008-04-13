@@ -68,6 +68,10 @@ class UserTest < Test::Unit::TestCase
     assert_match(/^\w{10}$/, User.random_string(10))
   end
 
+  def test_has_first_language
+    User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess', :password_confirmation => 'passtoguess')
+  end
+
   def test_set_password
     # passing :password => 'xxx' calls the password= method
     u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')

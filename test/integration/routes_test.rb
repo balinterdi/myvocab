@@ -4,6 +4,9 @@ class RoutesTest < ActionController::IntegrationTest
   # fixtures :your, :models
 
   def test_routes
+    opts = { :controller => "word", :action => "all" }
+    assert_routing "", opts
+
     opts = { :controller => "user", :action => "register" }
     assert_routing "register", opts
     assert_equal "/register", url_for(opts.merge(:only_path => true))

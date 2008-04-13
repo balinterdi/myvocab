@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :words
+  has_many :learnings
+  has_many :languages, :through => :learnings
+  has_one :first_language, :class_name => "Language"
 
   validates_presence_of :login, :password, :password_confirmation, :email, :salt
   validates_length_of :login, :within => 3..20

@@ -1,5 +1,5 @@
 <% form_tag(:action => "create_pair") do -%>
-<%= fieldset_tag %>
+<% content_tag :fieldset do -%>
 <%= content_tag("legend", "New word") %>
 <ul>
   <li>
@@ -15,5 +15,5 @@
 </ul>
 
 <%= submit_tag("save".capitalize, :class => "submit_button") %>
-<%= end_fieldset_tag %>
+<% end -%>
 <% end -%>

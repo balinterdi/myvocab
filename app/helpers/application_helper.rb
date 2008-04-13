@@ -1,20 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
+require 'nice_form_builder_helper'
+
 module ApplicationHelper
-  def label_tag (name, object, method=false)
+
+  include NiceFormBuilder
+
+  def label_tag(name, object, method=false)
     if method
       id = "#{object}_#{method}"
     else
       id = object
     end
     "<label for=\"#{id}\">#{name}</label>"
-  end
-
-  def fieldset_tag
-    "<fieldset>"
-  end
-
-  def end_fieldset_tag
-    "</fieldset>"
   end
 
   def list_tag(ordered, options = {})

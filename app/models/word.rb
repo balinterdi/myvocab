@@ -1,5 +1,4 @@
 class Word < ActiveRecord::Base
-
   has_many :users
   # synonims or words in other languages with the same meaning
   # has_and_belongs_to_many :words

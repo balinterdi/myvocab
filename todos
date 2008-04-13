@@ -1,4 +1,4 @@
-- apukán subversion-t telepíteni és importálni oda a kódot
-- a menü linkjein ne látszon, hogy visited v. nem
-- user táblát megcsinálni
-- migration-öket megnézni, h. hogyan kell
+- "first language" is not compulsory until user tries to start his/her dictionary
+So when word/new (or pair) is requested, the "choose first language" (or simply user profile) page should be
+fetched, and when the user selects the first language and submits the form, he should be redirected to where
+ha came from (word/new or pair).
