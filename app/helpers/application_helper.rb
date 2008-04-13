@@ -2,6 +2,8 @@
 # require 'nice_form_builder_helper'
 
 module ApplicationHelper
+  #FIXME: NiceFormBuilder should be included from the separate file,
+  # but the nice_form_for is somehow then not fetchable from the views
 
   # include NiceFormBuilderMixin
   class NiceFormBuilder < ActionView::Helpers::FormBuilder
@@ -11,6 +13,7 @@ module ApplicationHelper
         @template.content_tag("li",
                               @template.content_tag("label", field.to_s.humanize) +
                               super)
+
       end
       END_SRC
       class_eval src, __FILE__, __LINE__

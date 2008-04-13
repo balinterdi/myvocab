@@ -74,6 +74,8 @@ class WordController < ApplicationController
     # but then it should be done in the view, too
     @from_lang = get_from_lang
     @to_lang = get_to_lang
+
+    ##FIXME: Paginator is removed from Rails 2.0.2, so another solution must be found
     # paginator described here:
     # http://www.nullislove.com/2007/05/24/pagination-in-rails/
     page = (params[:page] ||= 1).to_i
@@ -82,7 +84,7 @@ class WordController < ApplicationController
 
 
     item_count = count_words({:lang => @from_lang})
-    @word_pages = Paginator.new(self, item_count, items_per_page, page)
+    # @word_pages = Paginator.new(self, item_count, items_per_page, page)
     # @word_items = find_words(items_per_page, offset)
     @word_items = Word.find(:all) # find_word_pairs(@from_lang, @to_lang, items_per_page, offset)
   end

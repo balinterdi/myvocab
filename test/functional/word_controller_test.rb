@@ -22,6 +22,8 @@ class WordControllerTest < Test::Unit::TestCase
   end
 
   def XXXtest_failed_create_should_render_new
+    #FIXME: how can a controller method with no
+    # view with the same name be tested?
     post :create, :word => @failed_word_no_name
     assert_template 'new'
   end
@@ -32,7 +34,7 @@ class WordControllerTest < Test::Unit::TestCase
     assert_template 'pair'
     assert_not_nil assigns(:word1)
     assert_not_nil assigns(:word2)
-    assert_select 'form li', :count => 2
+    assert_select 'form li', :at_least => 2
   end
 
 end
