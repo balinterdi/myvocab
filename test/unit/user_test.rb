@@ -3,7 +3,11 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
 
   def setup
-    @user = User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess', :password_confirmation => 'passtoguess')
+    @user = User.create(:email => 'john@company.com',
+                        :login => 'john',
+                        :password => 'passtoguess',
+                        :password_confirmation => 'passtoguess',
+                        :first_language_id => 1)
   end
 
   def test_should_require_login
@@ -57,9 +61,7 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_email_unicity
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
-    assert_nil  u.errors.on(:email)
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    u = User.create(:email => @user.email)
     assert u.errors.on(:email)
   end
 
@@ -73,19 +75,12 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_set_password
-    # passing :password => 'xxx' calls the password= method
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass')
-    assert u.errors.on(:password_confirmation)
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
-    #FIXME: there is an error but the user is saved nonetheless
-    # puts "Errors: #{u.errors.inspect}"
-    assert_equal u, User.authenticate('cecile', 'cecilepass')
+    @user.update_attribute(:password, "new_password")
+    assert_equal @user, User.authenticate(@user.login, "new_password")
   end
 
   def test_login_unicity
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
-    assert_nil u.errors.on(:login)
-    u = User.create(:email => 'cecile@company.com', :login => 'cecile', :password => 'cecilepass', :password_confirmation => 'cecilepass')
+    u = User.create(:login => @user.login)
     assert u.errors.on(:login)
   end
 

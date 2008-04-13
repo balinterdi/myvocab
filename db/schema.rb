@@ -5,8 +5,8 @@
 ActiveRecord::Schema.define(:version => 9) do
 
   create_table "languages", :force => true do |t|
-    t.column "name", :string, :null => false
-    t.column "code", :string, :null => false
+    t.column "name", :string,              :null => false
+    t.column "code", :string, :limit => 2, :null => false
   end
 
   create_table "learnings", :force => true do |t|
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.column "email",             :string,  :limit => 30, :null => false
     t.column "hashed_password",   :string
     t.column "salt",              :string
-    t.column "first_language_id", :integer
+    t.column "first_language_id", :integer,               :null => false
   end
 
   create_table "words", :force => true do |t|

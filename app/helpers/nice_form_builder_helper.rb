@@ -1,4 +1,4 @@
-module NiceFormBuilder
+module NiceFormBuilderMixin
 
   class NiceFormBuilder < ActionView::Helpers::FormBuilder
     (field_helpers - %w(check_box radio_button hidden_field)).each do |selector|
@@ -6,7 +6,7 @@ module NiceFormBuilder
       def #{selector}(field, options = {})
         @template.content_tag("li",
                               @template.content_tag("label", field.to_s.humanize + ":") +
-                              super
+                              super)
       end
       END_SRC
       class_eval src, __FILE__, __LINE__
@@ -20,6 +20,7 @@ module NiceFormBuilder
              object,
              (options||{}).merge(:builder => NiceFormBuilder),
              &proc)
+    concat(submit_tag("save".capitalize, :class => "submit_button"), proc.binding)
     concat("</fieldset>", proc.binding)
   end
 

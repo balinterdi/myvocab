@@ -1,19 +1,6 @@
 <% form_tag(:action => "create_pair") do -%>
-  <% content_tag :fieldset do -%>
-    <%= content_tag("legend", "New word") %>
-    <ul>
-      <li>
-      <%= label_tag("English", "word1", method="name") %>
-      <%= input("word1", "name") %>
-      <%= hidden_field("word1", "lang", :value => "en" ) %>
-      </li>
-      <li>
-      <%= label_tag("Hungarian", "word2", method="name") %>
-      <%= input("word2", "name") %>
-      <%= hidden_field("word2", "lang", :value => "hu" ) %>
-      </li>
-    </ul>
-
-    <%= submit_tag("save".capitalize, :class => "submit_button") %>
-  <% end -%>
+  <% nice_form_for :word, nil, :title => "New word" do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :language %>
+  <% end %>
 <% end -%>

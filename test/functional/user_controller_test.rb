@@ -11,9 +11,10 @@ class UserControllerTest < Test::Unit::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @successful_register_opts = { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'bryanpass' }
-    @failing_register_opts_no_password = { :login => 'bryan', :email => 'bryan@bryan.com' }
-    @failing_register_opts_badly_repeated_password = { :login => 'bryan', :email => 'bryan@bryan.com', :password_confirmation => 'xxxbryanpass' }
+    @failing_register_opts_no_password = { :login => 'bryan', :email => 'bryan@bryan.com', :first_language_id => 1 }
+    @failing_register_opts_badly_repeated_password = @failing_register_opts_no_password.merge({ :password => 'bryanpass', :password_confirmation => 'xxxbryanpass' })
+
+    @successful_register_opts = @failing_register_opts_badly_repeated_password.merge({ :password_confirmation => 'bryanpass'})
 
     @successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
     @failing_login_opts_nonexistent_user = { :login => 'bryan_the_rabbit', :password => 'bryanpass' }
@@ -55,8 +56,8 @@ class UserControllerTest < Test::Unit::TestCase
     assert @controller.current_user_id.blank?
   end
 
-  def test_successful_register
-    post :register, :user => { :login => 'bryan', :email => 'bryan@bryan.com', :password => 'bryanpass', :password_confirmation => 'bryanpass' }
+  def test_successful_register_no_error_messages
+    post :register, :user => @successful_register_opts
     #FIXME: test if successful registration message is displayed,
     # but without duplicating it (once defining it in the test and once in the view, e.g)
     assert_nil flash[:error]

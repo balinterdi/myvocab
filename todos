@@ -2,3 +2,4 @@
 So when word/new (or pair) is requested, the "choose first language" (or simply user profile) page should be
 fetched, and when the user selects the first language and submits the form, he should be redirected to where
 ha came from (word/new or pair).
+- adding "first language" should automatically add this language to "languages"
