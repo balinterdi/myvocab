@@ -1,10 +1,10 @@
 <% form_tag :action => "create" do  %>
-<% content_tag :fieldset do -%>
-<%= content_tag("legend", "New word") %>
+  <% content_tag :fieldset do -%>
+    <%= content_tag("legend", "New word") %>
 
-<%= input("word", "name") %>
+    <%= input("word", "name") %>
 
-<%= language_dropdown("word", "name") %>
-<%= submit_tag ("create word".capitalize) %>
-<% end -%>
+    <%= language_dropdown("word", "name") %>
+    <%= submit_tag ("create word".capitalize) %>
+  <% end -%>
 <% end -%>
