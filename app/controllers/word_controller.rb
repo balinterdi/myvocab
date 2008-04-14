@@ -9,8 +9,15 @@ class WordController < ApplicationController
   end
 
   def pair
-    @word1 = Word.new
-    @word2 = Word.new
+    #TODO: the Word model should save the other word (the synonym), too.
+    # After that (maybe with an after_update, see advanced rails recipe),
+    # a meaning has to be created if the name in the first language
+    # is not yet present as a meaning
+    # That would mean, in fact for the Word model to save synonyms,
+    # something a railscast shows us how to do
+    user = User.find(:first, current_user_id)
+    @first_language = user.first_language
+    @default_language = user.default_language
   end
 
   def create_pair

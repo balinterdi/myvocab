@@ -3,11 +3,14 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
 
   def setup
-    @user = User.create(:email => 'john@company.com',
-                        :login => 'john',
-                        :password => 'passtoguess',
-                        :password_confirmation => 'passtoguess',
-                        :first_language_id => 1)
+    user_attributes = {
+      :email => 'john@company.com',
+      :login => 'john',
+      :password => 'passtoguess',
+      :password_confirmation => 'passtoguess',
+      :first_language_id => 1 }
+    @user = User.create(user_attributes)
+    @user_with_default_language = User.create(user_attributes.merge({:default_language_id => 2}))
   end
 
   def test_should_require_login
@@ -68,10 +71,6 @@ class UserTest < Test::Unit::TestCase
   def test_random_string
     assert_match(/^\w{7}$/, User.random_string(7))
     assert_match(/^\w{10}$/, User.random_string(10))
-  end
-
-  def test_has_first_language
-    User.create(:email => 'john@company.com', :login => 'john', :password => 'passtoguess', :password_confirmation => 'passtoguess')
   end
 
   def test_set_password

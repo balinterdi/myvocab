@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :learnings
   has_many :languages, :through => :learnings
   has_one :first_language, :class_name => "Language"
+  has_one :default_language, :class_name => "Language"
 
   validates_presence_of :login, :password, :password_confirmation, :email, :salt, :first_language_id
   validates_length_of :login, :within => 3..20

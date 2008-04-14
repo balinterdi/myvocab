@@ -27,7 +27,7 @@ module ApplicationHelper
     concat("<ul>",  proc.binding)
     form_for(name,
              object,
-             options.merge(:builder => NiceFormBuilder),
+             options,
              &proc)
     concat(submit_tag("save".capitalize, :class => "submit_button"), proc.binding)
     concat("</ul>",  proc.binding)

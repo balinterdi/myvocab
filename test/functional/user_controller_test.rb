@@ -15,10 +15,11 @@ class UserControllerTest < Test::Unit::TestCase
     @failing_register_opts_badly_repeated_password = @failing_register_opts_no_password.merge({ :password => 'bryanpass', :password_confirmation => 'xxxbryanpass' })
 
     @successful_register_opts = @failing_register_opts_badly_repeated_password.merge({ :password_confirmation => 'bryanpass'})
-
     @successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
     @failing_login_opts_nonexistent_user = { :login => 'bryan_the_rabbit', :password => 'bryanpass' }
     @failing_login_opts_bad_password = { :login => 'bryan', :password => 'xxxbryanpass' }
+
+    @english = Language.new(:name => "english", :code => "en")
   end
 
   # see http://manuals.rubyonrails.com/read/chapter/28
@@ -96,13 +97,13 @@ class UserControllerTest < Test::Unit::TestCase
   end
 
   def stub_successful_login
+    #FIXME: this stubbing should be refactored
     user = User.create(@successful_register_opts)
     User.stubs(:authenticate).returns(user)
     return user
   end
 
   def test_successful_login_sets_session
-    #FIXME: this stubbing should be refactored
     user = stub_successful_login
     post :login, :user => @successful_login_opts
     assert_equal user.id, @controller.current_user_id
@@ -155,6 +156,13 @@ class UserControllerTest < Test::Unit::TestCase
     user = stub_successful_login
     post :login, :user => @successful_login_opts
     assert_nil @controller.check_authentication
+  end
+
+  def XXXtest_login_should_set_default_language
+    #TODO: should decide if english should be the default language
+    user = stub_successful_login
+    post :login, :user => @successful_login_opts
+    assert_equal(@english, @controller.default_language_id)
   end
 
 end

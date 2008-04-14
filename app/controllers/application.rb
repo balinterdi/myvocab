@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     session[:user]
   end
 
+  def default_language_id
+    session[:default_language]
+  end
+
   def get_from_lang
     session[:from_lang].nil? ? 'en' : session[:from_lang]
   end

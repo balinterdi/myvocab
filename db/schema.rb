@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "languages", :force => true do |t|
     t.string "name",              :null => false
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(:version => 9) do
 
   create_table "users", :force => true do |t|
     t.string  "name"
-    t.string  "login",             :limit => 30, :null => false
-    t.string  "hashed_password",                 :null => false
-    t.string  "email",             :limit => 30, :null => false
+    t.string  "login",               :limit => 30, :null => false
+    t.string  "hashed_password",                   :null => false
+    t.string  "email",               :limit => 30, :null => false
     t.string  "salt"
-    t.integer "first_language_id",               :null => false
+    t.integer "first_language_id",                 :null => false
+    t.integer "default_language_id"
   end
 
   create_table "words", :force => true do |t|
