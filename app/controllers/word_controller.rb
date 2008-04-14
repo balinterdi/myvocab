@@ -1,5 +1,6 @@
 class WordController < ApplicationController
   layout "standard-layout"
+  before_filter :check_authentication
 
   def new
     @word = Word.new

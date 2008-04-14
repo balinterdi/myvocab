@@ -59,7 +59,7 @@ class UserControllerTest < Test::Unit::TestCase
 
   def test_successful_register_no_error_messages
     post :register, :user => @successful_register_opts
-    #FIXME: test if successful registration message is displayed,
+    #TODO: test if successful registration message is displayed,
     # but without duplicating it (once defining it in the test and once in the view, e.g)
     assert_nil flash[:error]
   end
@@ -96,40 +96,33 @@ class UserControllerTest < Test::Unit::TestCase
     assert !flash[:error].blank?
   end
 
-  def stub_successful_login
-    #FIXME: this stubbing should be refactored
-    user = User.create(@successful_register_opts)
-    User.stubs(:authenticate).returns(user)
-    return user
-  end
-
   def test_successful_login_sets_session
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     assert_equal user.id, @controller.current_user_id
   end
 
   def test_successful_login_redirects_to_home_page
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     assert_redirected_to home_url
   end
 
   def test_successful_login_no_error_message
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     assert flash[:error].blank?
   end
 
   def test_logout_deletes_user_session
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     get :logout
     assert_nil @controller.current_user_id
   end
 
   def test_logout_redirects_to_home_page
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     get :logout
     assert_redirected_to home_url
@@ -153,14 +146,14 @@ class UserControllerTest < Test::Unit::TestCase
   end
 
   def test_check_authentication_when_logged_in
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     assert_nil @controller.check_authentication
   end
 
   def XXXtest_login_should_set_default_language
     #TODO: should decide if english should be the default language
-    user = stub_successful_login
+    user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     assert_equal(@english, @controller.default_language_id)
   end

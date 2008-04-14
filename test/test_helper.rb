@@ -27,4 +27,11 @@ class Test::Unit::TestCase
   self.use_instantiated_fixtures  = false
 
   # Add more helper methods to be used by all tests here...
+
+  def stub_successful_login(user_params)
+    user = User.create(user_params)
+    User.stubs(:authenticate).returns(user)
+    return user
+  end
+
 end
