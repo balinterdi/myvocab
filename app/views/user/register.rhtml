@@ -1,9 +1,27 @@
-<h1>Register</h1>
-<% form_tag :action => 'register' do %>
-<%= input("user", "name") %>
-<%= input("user", "login") %>
-<%= input("user", "email") %>
-<%= password_field "user", "password" %>
-<%= password_field "user", "password_confirmation" %>
-<%= submit_tag("submit".capitalize, :class => "submit_button") %>
+<% form_tag :action => "register" do -%>
+  <% nice_form_for :user, nil, :title => "Register" do |f| %>
+    <% content_tag :li do -%>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    <% end -%>
+    <% content_tag :li do -%>
+      <%= f.label :login %>
+      <%= f.text_field :login %>
+    <% end -%>
+    <% content_tag :li do -%>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    <% end -%>
+    <% content_tag :li do -%>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    <% end -%>
+    <% content_tag :li do -%>
+      <%= f.label :password_confirmation, "Password again" %>
+      <%= f.password_field :password_confirmation %>
+    <% end -%>
+
+  <% end %>
 <% end -%>
+
+

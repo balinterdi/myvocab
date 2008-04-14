@@ -21,6 +21,13 @@ class WordControllerTest < Test::Unit::TestCase
     assert_redirected_to login_url
   end
 
+  def test_get_new_page
+    @controller.stubs(:check_authentication).returns(true)
+    get :new
+    assert_response :success
+    assert_template 'new'
+  end
+
   def test_get_pair_page_no_login_redirects_to_login
     get :pair
     assert_redirected_to login_url
@@ -35,6 +42,7 @@ class WordControllerTest < Test::Unit::TestCase
 
   def XXXtest_should_show_pair
     #TODO: finish this
+    @controller.stubs(:check_authentication).returns(true)
     get :pair
     assert_response :success
     assert_template 'pair'
