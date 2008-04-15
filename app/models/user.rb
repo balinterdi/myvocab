@@ -2,10 +2,15 @@ class User < ActiveRecord::Base
   has_many :words
   has_many :learnings
   has_many :languages, :through => :learnings
-  has_one :first_language, :class_name => "Language"
-  has_one :default_language, :class_name => "Language"
+  #FIXME: we can't have several types of associations between two models. So
+  # I cannot say User has_many :languages, :through => :learnings and
+  # has_one :first_language, :class_name => "Language". The has_many association
+  # has to be kept and the join model (Learning) enriched.
 
-  validates_presence_of :login, :password, :password_confirmation, :email, :salt, :first_language_id
+  #TODO: validates_presence_of :password and :password_confirmation makes
+  # a totally valid user invalid since these are not saved to the model(database)
+  # At the same time, these checks are needed to validate the form, so what's the solution?
+  validates_presence_of :login, :password, :password_confirmation, :email, :salt
   validates_length_of :login, :within => 3..20
   validates_length_of :password, :within => 6..100
   validates_length_of :email, :minimum => 5
@@ -15,13 +20,19 @@ class User < ActiveRecord::Base
 
   # all fields that should not be updateable from the web should be protected
   attr_protected :id, :salt
-
   attr_accessor :password, :password_confirmation
 
   def password=(pass)
     @password = pass
     self.salt = User.random_string(10) if !self.salt?
     self.hashed_password = User.encrypt(pass, self.salt)
+  end
+
+  def first_language_id=(id)
+    language = Language.find(id)
+    learnings.create(:language => language,
+                          :start_date => Date.today,
+                          :is_first_language => true)
   end
 
   def self.random_string(len)

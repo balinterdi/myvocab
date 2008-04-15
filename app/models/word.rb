@@ -1,10 +1,12 @@
 class Word < ActiveRecord::Base
   has_many :users
-  # synonims or words in other languages with the same meaning
-  # has_and_belongs_to_many :words
   has_many :meanings
   has_many :synonyms, :through => :meanings, :class_name => 'Word'
-
+  #TODO: the most elegant solution would be to make synonyms symmetrical
+  #If Word A has synonym Word B, then Word B also has Word A as synonym
+  # pointers:
+  # - an answer to my rails forum question
+  # - http://blog.hasmanythrough.com/2006/4/21/self-referential-through
   validates_presence_of :name, :lang
 
   def find_words_for_lang(language)

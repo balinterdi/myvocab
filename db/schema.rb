@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "languages", :force => true do |t|
     t.string "name",              :null => false
@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(:version => 10) do
   create_table "learnings", :force => true do |t|
     t.integer "user_id"
     t.integer "language_id"
-    t.date    "start_date",  :null => false
+    t.date    "start_date",                             :null => false
+    t.boolean "is_first_language",   :default => false, :null => false
+    t.boolean "is_default_language", :default => false, :null => false
   end
 
   create_table "meanings", :force => true do |t|
@@ -28,13 +30,11 @@ ActiveRecord::Schema.define(:version => 10) do
   end
 
   create_table "users", :force => true do |t|
-    t.string  "name"
-    t.string  "login",               :limit => 30, :null => false
-    t.string  "hashed_password",                   :null => false
-    t.string  "email",               :limit => 30, :null => false
-    t.string  "salt"
-    t.integer "first_language_id",                 :null => false
-    t.integer "default_language_id"
+    t.string "name"
+    t.string "login",           :limit => 30, :null => false
+    t.string "hashed_password",               :null => false
+    t.string "email",           :limit => 30, :null => false
+    t.string "salt"
   end
 
   create_table "words", :force => true do |t|

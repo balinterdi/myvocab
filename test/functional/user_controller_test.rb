@@ -43,6 +43,7 @@ class UserControllerTest < Test::Unit::TestCase
     assert_tag :tag => 'form', :descendant => { :tag => 'input', :attributes => { :type => 'submit' } }
   end
 
+  #TODO: Form errors should be displayed by error_messages_for
   def test_failed_register
     post :register, :user => @failing_register_opts_no_password
     assert_not_nil flash[:error]

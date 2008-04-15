@@ -22,6 +22,7 @@ module ApplicationHelper
 
   def nice_form_for(name, object = nil, options = {}, &proc)
     options.reverse_merge! :title => "Form title comes here"
+    options.reverse_merge! :submit_label => "submit"
     concat("<fieldset>", proc.binding)
     concat("<legend>#{options[:title]}</legend>", proc.binding)
     concat("<ul>",  proc.binding)
@@ -29,7 +30,7 @@ module ApplicationHelper
              object,
              options,
              &proc)
-    concat(submit_tag("save".capitalize, :class => "submit_button"), proc.binding)
+    concat(submit_tag(options[:submit_label].capitalize, :class => "submit_button"), proc.binding)
     concat("</ul>",  proc.binding)
     concat("</fieldset>", proc.binding)
   end

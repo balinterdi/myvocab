@@ -7,10 +7,9 @@ class UserTest < Test::Unit::TestCase
       :email => 'john@company.com',
       :login => 'john',
       :password => 'passtoguess',
-      :password_confirmation => 'passtoguess',
-      :first_language_id => 1 }
+      :password_confirmation => 'passtoguess' }
+    user_with_first_language_attributes = user_attributes.merge({:first_language_id => 1})
     @user = User.create(user_attributes)
-    @user_with_default_language = User.create(user_attributes.merge({:default_language_id => 2}))
   end
 
   def test_should_require_login
@@ -93,6 +92,17 @@ class UserTest < Test::Unit::TestCase
 
   def test_authenticate_success
     assert_equal @user, User.authenticate('john', 'passtoguess'), 'successful user authentication'
+  end
+
+  def test_save_first_language
+    english = Language.create(:name => "english", :code => "en")
+    # Language.stubs(:find).returns(english)
+    @user.first_language_id = english.id
+    assert_equal 1, @user.languages.size
+    assert_equal english, @user.languages.first
+    assert_equal 1, @user.learnings.size
+    assert @user.learnings.first.is_first_language
+    # assert_equal english, @user.learnings.first.language
   end
 
 end
