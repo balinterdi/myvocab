@@ -14,6 +14,9 @@ class WordControllerTest < Test::Unit::TestCase
 
     @failed_word_no_name = { :name => "", :lang => "en" }
     @failed_word_no_lang = { :name => "decline", :lang => "" }
+
+    user = stub_successful_login(@successful_register_opts)
+    post :login, :user => @successful_login_opts
   end
 
   def test_get_new_page_no_login_redirects_to_login
@@ -23,6 +26,7 @@ class WordControllerTest < Test::Unit::TestCase
 
   def test_get_new_page
     @controller.stubs(:check_authentication).returns(true)
+    user = stub_successful_login(@successful_register_opts)
     get :new
     assert_response :success
     assert_template 'new'

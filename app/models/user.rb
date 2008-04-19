@@ -28,11 +28,11 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypt(pass, self.salt)
   end
 
-  def first_language_id
+  def first_language
     learnings.find :first, :conditions => { :is_first_language => true }
   end
 
-  def first_language_id=(id)
+  def first_language=(id)
     language = Language.find(id)
     learnings.build(:language => language,
                           :start_date => Date.today,

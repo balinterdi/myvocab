@@ -96,15 +96,15 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_get_first_language
-    assert_equal nil, @user.first_language_id
-    @user.first_language_id = @english.id
+    assert_equal nil, @user.first_language
+    @user.first_language = @english.id
     @user.save
-    assert_equal @user.learnings.first, @user.first_language_id
+    assert_equal @user.learnings.first, @user.first_language
   end
 
   def test_save_first_language
     # Language.stubs(:find).returns(@english)
-    @user.first_language_id = @english.id
+    @user.first_language = @english.id
     @user.save
     assert_equal 1, @user.languages.size
     assert_equal @english, @user.languages.first

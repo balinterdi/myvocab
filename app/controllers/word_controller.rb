@@ -9,8 +9,9 @@ class WordController < ApplicationController
     # is not yet present as a meaning
     # That would mean, in fact for the Word model to save synonyms,
     # something a railscast shows us how to do
-    user = User.find(:first, current_user_id)
-    @first_language = user.first_language
+    @word = Word.new
+    @user = User.find(:first, current_user_id)
+    # @first_language = user.first_language
   end
 
   def create
@@ -35,8 +36,6 @@ class WordController < ApplicationController
     page = (params[:page] ||= 1).to_i
     items_per_page = 10
     offset = (page - 1) * items_per_page
-
-
     item_count = count_words({:lang => @from_lang})
     # @word_pages = Paginator.new(self, item_count, items_per_page, page)
     # @word_items = find_words(items_per_page, offset)
