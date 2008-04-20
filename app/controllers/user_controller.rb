@@ -7,7 +7,7 @@ class UserController < ApplicationController
     if request.post?
       if @user.save
         session[:user] = @user.id
-        redirect_to user_home_url
+        redirect_to words_for_user_url
       else
         flash[:error] = 'please correct the indicated errors'
       end
@@ -19,7 +19,8 @@ class UserController < ApplicationController
       @user = User.authenticate(params[:user])
       if @user
         session[:user] = @user.id
-        redirect_to user_home_url
+        debugger
+        redirect_to words_for_user_url
       else
         flash[:error] = 'Bad username or password'
       end

@@ -4,7 +4,7 @@ class RoutesTest < ActionController::IntegrationTest
   # fixtures :your, :models
 
   def test_routes
-    opts = { :controller => "word", :action => "all" }
+    opts = { :controller => "word", :action => "most_popular" }
     assert_routing "", opts
 
     opts = { :controller => "user", :action => "register" }

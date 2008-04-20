@@ -19,17 +19,18 @@ ActionController::Routing::Routes.draw do |map|
 
   #FIXME: map.resources auto-generates restful helpers, e.g edit_project_path, new_project_path, etc.
 
-  map.connect '', :controller => 'word', :action => 'all'
+  map.home '', :controller => 'word', :action => 'most_popular'
 
   # named routes
-  map.register 'register', :controller => 'user', :action => 'register'
-  map.home 'index', :controller => 'user', :action => 'index'
-  map.login 'login', :controller => 'user', :action => 'login'
-  map.user_home 'index', :controller => 'word', :action => 'index'
+  map.with_options :controller => 'user' do |user|
+    user.register 'register', :action => 'register'
+    user.login 'login', :action => 'login'
+    user.logout 'logout', :action => 'logout'
+  end
 
-  map.connect 'register', :controller => 'user', :action => 'register'
-  map.connect 'login', :controller => 'user', :action => 'login'
-  map.connect 'logout', :controller => 'user', :action => 'logout'
+  map.with_options :controller => 'word' do |word|
+    word.words_for_user '/words'
+  end
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'

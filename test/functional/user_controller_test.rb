@@ -66,7 +66,7 @@ class UserControllerTest < Test::Unit::TestCase
 
   def test_successful_register_redirects_to_home
     post :register, :user => @successful_register_opts
-    assert_redirected_to user_home_url
+    assert_redirected_to words_for_user_url
   end
 
   def test_successful_register_sets_session
@@ -105,7 +105,7 @@ class UserControllerTest < Test::Unit::TestCase
   def test_successful_login_redirects_to_home_page
     user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
-    assert_redirected_to home_url
+    assert_redirected_to words_for_user_url
   end
 
   def test_successful_login_no_error_message

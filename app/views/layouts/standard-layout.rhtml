@@ -10,17 +10,19 @@
    </div>
    <div id="main_menu">
      <ul>
-       <li><%= link_to 'New', :controller => "word", :action => "pair" %></li>
-       <li><%= link_to 'List', :controller => "word", :action => "all" %></li>
+       <li><%= link_to 'New', :controller => "word", :action => "new" %></li>
+       <li><%= link_to 'List', :controller => "word", :action => "index" %></li>
        <li><%= link_to 'Search', :controller => "search", :action => "search" %></li>
        <li><%= link_to 'Unfilled', :controller => "word", :action => "unfilled" %></li>
        <li><%= link_to 'Change language', :controller => "word", :action => "#" %></li>
        <li><%= link_to 'Tag cloud', :controller => "word", :action => "#" %></li>
      </ul>
    </div>
-   <% unless flash[:notice].blank? %>
-      <%= content_tag(:div, flash[:notice], :id=>"notification") %>
+   <% [:notice, :error].each do |level| -%>
+   <% unless flash[level].blank? %>
+      <%= content_tag(:div, flash[level], :id=>level) %>
    <% end %>
+   <% end -%>
    <%= yield %>
  </body>
 </html>

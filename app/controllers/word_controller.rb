@@ -28,7 +28,7 @@ class WordController < ApplicationController
     ##FIXME: Paginator is removed from Rails 2.0.2, so another solution must be found
     # paginator described here:
     # http://www.nullislove.com/2007/05/24/pagination-in-rails/
-    @word_items = Word.find(:all)
+    @words = Word.find(:all, :conditions => [ "user_id = ?", current_user_id])
   end
 
   def search
@@ -41,6 +41,9 @@ class WordController < ApplicationController
     else
       @words = []
     end
+  end
+
+  def most_popular
   end
 
 end

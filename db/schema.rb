@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "languages", :force => true do |t|
     t.string "name",              :null => false
@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(:version => 11) do
   end
 
   create_table "words", :force => true do |t|
-    t.string "name",              :null => false
-    t.string "lang", :limit => 2, :null => false
+    t.string  "name",        :null => false
+    t.integer "language_id", :null => false
+    t.integer "user_id",     :null => false
   end
 
 end
