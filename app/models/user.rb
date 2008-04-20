@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(credentials)
-    u = User.find_by_login(credentials[:login])
+    u = User.find(:first, :conditions => [ 'login = ?', credentials[:login]])
     return u unless u.nil? || self.encrypt(credentials[:password], u.salt) != u.hashed_password
   end
 
