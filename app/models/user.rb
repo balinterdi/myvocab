@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(pass + salt)
   end
 
-  def self.authenticate(login, pass)
-    u = User.find_by_login(login)
-    return u unless u.nil? || self.encrypt(pass, u.salt) != u.hashed_password
+  def self.authenticate(credentials)
+    u = User.find_by_login(credentials[:login])
+    return u unless u.nil? || self.encrypt(credentials[:password], u.salt) != u.hashed_password
   end
 
 end

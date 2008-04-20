@@ -75,7 +75,7 @@ class UserTest < Test::Unit::TestCase
 
   def test_set_password
     @user.update_attribute(:password, "new_password")
-    assert_equal @user, User.authenticate(@user.login, "new_password")
+    assert_equal @user, User.authenticate(:login => @user.login, :password => "new_password")
   end
 
   def test_login_unicity
@@ -84,15 +84,15 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_authenticate_no_such_login
-    assert_nil User.authenticate('sebastien', 'passtoguess'), 'no such login'
+    assert_nil User.authenticate(:login => 'sebastien', :password => 'passtoguess'), 'no such login'
   end
 
   def test_authenticate_bad_password
-    assert_nil User.authenticate('john', 'qwerty'), 'bad password'
+    assert_nil User.authenticate(:login => 'john', :password => 'qwerty'), 'bad password'
   end
 
   def test_authenticate_success
-    assert_equal @user, User.authenticate('john', 'passtoguess'), 'successful user authentication'
+    assert_equal @user, User.authenticate(:login => 'john', :password => 'passtoguess'), 'successful user authentication'
   end
 
   def test_get_first_language

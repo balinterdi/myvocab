@@ -1,3 +1,4 @@
+<%= error_messages_for :user %>
 <% form_tag :action => "login" do -%>
   <% nice_form_for :user, nil, :title => "Login" do |f| %>
     <% content_tag :li do -%>
@@ -8,5 +9,6 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
     <% end -%>
+  <%= submit_tag "Submit", :class => "submit_button" %>
   <% end %>
 <% end -%>

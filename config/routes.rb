@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register 'register', :controller => 'user', :action => 'register'
   map.home 'index', :controller => 'user', :action => 'index'
   map.login 'login', :controller => 'user', :action => 'login'
-  map.user_home 'index', :controller => 'word', :action => 'list'
+  map.user_home 'index', :controller => 'word', :action => 'index'
 
   map.connect 'register', :controller => 'user', :action => 'register'
   map.connect 'login', :controller => 'user', :action => 'login'

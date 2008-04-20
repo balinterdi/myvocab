@@ -28,15 +28,6 @@ class Test::Unit::TestCase
 
   # Add more helper methods to be used by all tests here...
 
-  @english = Language.create(:name => "english", :code => "en")
-  @failing_register_opts_no_password = { :login => 'bryan', :email => 'bryan@bryan.com', :first_language => @english.id }
-  @failing_register_opts_badly_repeated_password = @failing_register_opts_no_password.merge({ :password => 'bryanpass', :password_confirmation => 'xxxbryanpass' })
-
-  @successful_register_opts = @failing_register_opts_badly_repeated_password.merge({ :password_confirmation => 'bryanpass'})
-  @successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
-  @failing_login_opts_nonexistent_user = { :login => 'bryan_the_rabbit', :password => 'bryanpass' }
-  @failing_login_opts_bad_password = { :login => 'bryan', :password => 'xxxbryanpass' }
-
   def stub_successful_login(user_params)
     user = User.create(user_params)
     User.stubs(:authenticate).returns(user)

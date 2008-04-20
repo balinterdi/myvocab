@@ -26,7 +26,7 @@ class WordControllerTest < Test::Unit::TestCase
 
   def test_get_new_page
     @controller.stubs(:check_authentication).returns(true)
-    user = stub_successful_login(@successful_register_opts)
+    # user = stub_successful_login(@successful_register_opts)
     get :new
     assert_response :success
     assert_template 'new'
