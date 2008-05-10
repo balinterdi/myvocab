@@ -8,6 +8,7 @@
     <%= f.text_field :name %>
   <% end -%>
   <% content_tag :li do -%>
+    <!-- TODO: use u.collection_select to have a dropdown with all the possible languages -->
     <% fields_for :user do |u| %>
       <%= u.label :first_language, "english" %>
       <%= u.text_field :first_language %>
