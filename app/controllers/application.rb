@@ -17,12 +17,4 @@ class ApplicationController < ActionController::Base
     session[:default_language]
   end
 
-  def get_from_lang
-    session[:from_lang].nil? ? 'en' : session[:from_lang]
-  end
-
-  def get_to_lang
-    session[:to_lang].nil? ? 'hu' : session[:to_lang]
-  end
-
 end

@@ -11,23 +11,24 @@ class Word < ActiveRecord::Base
   # pointers:
   # - an answer to my rails forum question
   # - http://blog.hasmanythrough.com/2006/4/21/self-referential-through
-  validates_presence_of :name, :lang
+  validates_presence_of :name, :language
 
-  def find_words_for_lang(language)
-    find_synonyms { |w| w.lang == language }
+  def find_words_for_language(a_language)
+    find_synonyms { |w| w.language.code == a_language.code }
   end
 
-  def find_same_lang_synonyms
-    find_synonyms { |w| w.lang == lang }
+  def find_same_language_synonyms
+    find_synonyms { |w| w.language.code == language.code }
   end
 
   def find_foreign_synonyms
-    find_synonyms { |w| w.lang != lang }
+    find_synonyms { |w| w.language.code != language.code }
   end
 
-  # so if calling protected methods is also not allowed from tests
+  # Q: so if calling protected methods is also not allowed from tests
   # how do I test them?
-  # protected
+  # A: I suppose I don't since I only need to test methods that are available for
+  # the "outside world"?
 
   def find_synonyms(&blk)
     return synonyms unless block_given?

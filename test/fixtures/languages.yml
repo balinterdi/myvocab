@@ -7,4 +7,7 @@ two:
   id: 2
   name: french
   code: fr
-
+three:
+    id: 3
+    name: hungarian
+    code: hu

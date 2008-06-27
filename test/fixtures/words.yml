@@ -2,40 +2,40 @@
 one:
   id: 1
   name: foray
-  lang: en
+  language: en
 
 two:
   id: 2
   name: conspicuous
-  lang: en
+  language: en
 
 three:
   id: 3
   name: fosztogat
-  lang: hu
+  language: hu
 
 four:
   id: 4
   name: feltuno
-  lang: hu
+  language: hu
 
 five:
   id: 5
   name: box
-  lang: en
+  language: en
 
 six:
   id: 6
   name: refuse
-  lang: en
+  language: en
 
 seven:
   id: 7
   name: decline
-  lang: en
+  language: en
 
 eight:
   id: 8
   name: refuser
-  lang: fr
+  language: fr
 

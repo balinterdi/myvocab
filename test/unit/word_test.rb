@@ -1,12 +1,19 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class WordTest < Test::Unit::TestCase
-
+  fixtures :languages
+  
   def setup
-    @refuse = Word.new( :name => 'refuse', :lang => 'en' )
-    @decline = Word.new( :name => 'decline', :lang => 'en' )
-    @refuser = Word.new( :name => 'refuser', :lang => 'fr' )
-    @box = Word.new( :name => 'box', :lang => 'en' )
+    #@english = Language.new( :name => "English", :code => "en" )
+    #@french = Language.new( :name => "French", :code => "fr" )    
+    @english = Language.find_by_code("en")
+    @french = Language.find_by_code("fr")
+    @hungarian = Language.find_by_code("hu")
+    
+    @refuse = Word.new( :name => 'refuse', :language => @english )
+    @decline = Word.new( :name => 'decline', :language => @english )
+    @refuser = Word.new( :name => 'refuser', :language => @french )
+    @box = Word.new( :name => 'box', :language => @english )
     @refuse.stubs(:synonyms).returns([@decline, @refuser])
   end
 
@@ -22,8 +29,8 @@ class WordTest < Test::Unit::TestCase
     # for that to actually work, validation
     # must be enabled in the Word model
     # (with validates_presence_of :name)
-    w = Word.create(:lang => nil)
-    assert w.errors.on(:lang)
+    w = Word.create(:language => nil)
+    assert w.errors.on(:language)
   end
 
   def test_find_synonyms_no_synonyms
@@ -42,23 +49,23 @@ class WordTest < Test::Unit::TestCase
     assert_equal(false, synonyms_names.include?('box'))
   end
 
-  def test_find_words_for_lang
-    hu_words = @refuse.find_words_for_lang('hu')
+  def test_find_words_for_language
+    hu_words = @refuse.find_words_for_language(@hungarian)
     assert_equal([], hu_words)
-    fr_words = @refuse.find_words_for_lang('fr')
+    fr_words = @refuse.find_words_for_language(@french)
     assert_equal(1, fr_words.length)
     assert_equal(@refuser, fr_words.first)
-    en_words = @refuse.find_words_for_lang('en')
+    en_words = @refuse.find_words_for_language(@english)
     assert_equal(1, en_words.length)
     assert_equal(true, en_words.include?(@decline))
   end
 
-  def test_find_same_lang_synonyms_empty
-    assert_equal([], @box.find_same_lang_synonyms)
+  def test_find_same_language_synonyms_empty
+    assert_equal([], @box.find_same_language_synonyms)
   end
 
-  def test_find_same_lang_synonyms
-    syns = @refuse.find_same_lang_synonyms
+  def test_find_same_language_synonyms
+    syns = @refuse.find_same_language_synonyms
     assert_equal(1, syns.length)
     assert_equal(@decline, syns.first)
   end

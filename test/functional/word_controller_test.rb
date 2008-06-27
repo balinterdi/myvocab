@@ -5,7 +5,7 @@ require 'word_controller'
 class WordController; def rescue_action(e) raise e end; end
 
 class WordControllerTest < Test::Unit::TestCase
-  fixtures :words
+  # fixtures :words
 
   def setup
     @controller = WordController.new
