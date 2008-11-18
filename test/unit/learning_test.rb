@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 require 'date'
 
 class LearningTest < Test::Unit::TestCase
-  # fixtures :learnings
+  fixtures :languages
 
   #FIXME: what do I say so that it is not settable from web,
   # but settable through associations?
@@ -16,5 +16,10 @@ class LearningTest < Test::Unit::TestCase
     learning.start_date = Date.today
     assert_equal learning.start_date, Date.today
   end
+
+  def test_default_first_language
+    assert_equal("en", Learning.default_first_language.code)
+  end
+
 
 end

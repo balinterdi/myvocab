@@ -1,11 +1,9 @@
+class UserException < Exception; end
+
 class User < ActiveRecord::Base
   has_many :words
   has_many :learnings
   has_many :languages, :through => :learnings
-  #FIXME: we can't have several types of associations between two models. So
-  # I cannot say User has_many :languages, :through => :learnings and
-  # has_one :first_language, :class_name => "Language". The has_many association
-  # has to be kept and the join model (Learning) enriched.
 
   #TODO: validates_presence_of :password and :password_confirmation makes
   # a totally valid user invalid since these are not saved to the model(database)
@@ -29,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def first_language
-    learnings.find :first, :conditions => { :is_first_language => true }
+    learnings.select { |l| l.is_first_language }.first
   end
 
   def first_language=(id)
@@ -39,6 +37,32 @@ class User < ActiveRecord::Base
                           :is_first_language => true)
   end
 
+  def default_language
+    learnings.select { |l| l.is_default_language }.first
+  end
+
+  def default_language=(id)
+    language = Language.find(id)
+    learnings.build(:language => language,
+                          :start_date => Date.today,
+                          :is_default_language => true)
+  end
+
+	def add_language(lang, opts={})
+		raise UserException unless learnings.collect(&:language).select { |l| l == lang }.empty?
+		learning_attrs = {:language => lang, :start_date => Date.today, 
+											:is_default_language => false, :is_first_language => false}.merge(opts)
+		learnings.build(learning_attrs)
+	end
+	
+	def add_as_default_language(lang)
+		add_language(lang, :is_default_language => true)
+	end
+	
+	def add_as_first_language(lang)
+		add_language(lang, :is_first_language => false)
+	end
+	
   def self.random_string(len)
     rnd_string = []
     chars = ('a'..'z').to_a + (0..9).to_a

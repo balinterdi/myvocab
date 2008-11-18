@@ -32,6 +32,14 @@ class UserController < ApplicationController
     redirect_to home_url
   end
 
+	def add_language
+		@user = User.find(current_user_id)
+		# @languages = Language.find(:all)
+		if request.post?
+			
+		end
+	end
+	
   def edit
   end
 

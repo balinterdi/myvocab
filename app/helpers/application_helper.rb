@@ -49,4 +49,14 @@ module ApplicationHelper
     "<label for=\"#{id}\">#{name}</label>"
   end
 
+=begin
+	TODO : language selector is no use like this
+=end
+	def XXXlanguage_selector
+		# select :first_language, Language.find(:all).collect { |l| [l.name, l.id] }
+		content_tag :select, :class => :strong, :name => "language_selector" do
+			content_tag :option, Language.find(:all).collect(&:name), { :selected => "selected" }
+		end
+	end
+
 end

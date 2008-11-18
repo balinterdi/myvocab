@@ -4,6 +4,9 @@
 #   gem install postgres
 # or use the pure-Ruby bindings on Windows:
 #   gem install postgres-pr
+
+# IMPORTANT! The postgreSQL server first has to be started like this for the tests and application to be able to run:
+# sudo -u postgres /Library/PostgreSQL8/bin/pg_ctl -D /Library/PostgreSQL8/data/ start
 development:
   adapter: postgresql
   database: myvocab_development

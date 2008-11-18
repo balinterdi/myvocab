@@ -1,3 +1,9 @@
+- if a learning of the same language is tried to be added to a user, raise an exception/or ignore the request silently
+
+- User#first_language= and User#default_language= create another learning even if I just want to change the first/default language. Make the methods create a new learning only if the language is not yet among the learnings
+
+- make a languages dropdown that can be given a language id which is the selected language in the dropdown. Maybe just putting the Languages.find(:all).collect part in a helper method would do the trick.
+
 - "first language" is not compulsory until user tries to start his/her dictionary
 So when word/new (or pair) is requested, the "choose first language" (or simply user profile) page should be
 fetched, and when the user selects the first language and submits the form, he should be redirected to where

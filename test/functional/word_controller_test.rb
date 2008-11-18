@@ -15,6 +15,14 @@ class WordControllerTest < Test::Unit::TestCase
     @failed_word_no_name = { :name => "", :lang => "en" }
     @failed_word_no_lang = { :name => "decline", :lang => "" }
 
+		# FIXME: this redefinition of model instance stubs is a violation of DRY since they are already 
+		# defined in user_controller_test.rb,
+		# but where should I define them to be DRY then?
+    @english = Language.create(:name => "english", :code => "en")
+		@successful_register_opts = { :login => 'bryan', :email => 'bryan@bryan.com', :first_language => @english.id,
+			:password => 'bryanpass', :password_confirmation => 'bryanpass' }
+		@successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
+
     user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
   end

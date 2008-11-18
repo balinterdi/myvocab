@@ -11,7 +11,7 @@ class WordController < ApplicationController
     # something a railscast shows us how to do
     @word = Word.new
     @user = User.find(:first, current_user_id)
-    # @first_language = user.first_language
+		@user.add_as_default_language(Language.find_by_code("en")) if @user.default_language.nil?		
   end
 
   def create

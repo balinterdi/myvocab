@@ -113,4 +113,20 @@ class UserTest < Test::Unit::TestCase
     # assert_equal @english, @user.learnings.first.language
   end
 
+	def test_add_language
+		assert_equal([], @user.languages)
+		@user.add_language(@english)
+		@user.save
+		assert_equal([@english], @user.learnings.collect(&:language))
+	end
+
+	def test_should_not_allow_multiple_learnings_of_same_langauge
+		@user.learnings = []
+		@user.add_language(@english)
+		assert_raise(UserException) { @user.add_language(@english) }  
+
+		# TODO: the following should raise an exception! how do I check that in ruby?
+		# @user.add_language("en")
+	end
+
 end

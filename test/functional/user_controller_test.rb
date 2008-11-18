@@ -6,12 +6,20 @@ require 'application'
 class UserController; def rescue_action(e) raise e end; end
 
 class UserControllerTest < Test::Unit::TestCase
+  #FIXME: Why can't I use fixtures here?
+  #fixtures :languages
+  
   def setup
     @controller = UserController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
+    #FIXME: this will not be needed once fixtures are in place
     @english = Language.create(:name => "english", :code => "en")
+    @french = Language.create(:name => "french", :code => "fr")
+    @hungarian = Language.create(:name => "hungarian", :code => "hu")
+  
+    #TODO: first_language and default_language will have to be added to the succful. registr. options here
     @failing_register_opts_no_password = { :login => 'bryan', :email => 'bryan@bryan.com', :first_language => @english.id }
     @failing_register_opts_badly_repeated_password = @failing_register_opts_no_password.merge({ :password => 'bryanpass', :password_confirmation => 'xxxbryanpass' })
 
@@ -149,6 +157,12 @@ class UserControllerTest < Test::Unit::TestCase
     user = stub_successful_login(@successful_register_opts)
     post :login, :user => @successful_login_opts
     #assert_nil @controller.check_authentication
+  end
+
+  def test_english_as_first_language_if_not_given
+    post :register, :user => @successful_register_opts
+    user = User.find_by_login(@successful_register_opts[:login])
+    assert_equal(@english.code, user.first_language.language.code)
   end
 
   def XXXtest_login_should_set_default_language
