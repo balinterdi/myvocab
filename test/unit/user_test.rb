@@ -3,6 +3,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
 
   def setup
+	  @english = Language.find_by_code("en")
+		@hungarian = Language.find_by_code("hu")
     user_attributes = {
       :email => 'john@company.com',
       :login => 'john',
@@ -10,7 +12,7 @@ class UserTest < Test::Unit::TestCase
       :password_confirmation => 'passtoguess' }
     user_with_first_language_attributes = user_attributes.merge({:first_language_id => 1})
     @user = User.create(user_attributes)
-    @english = Language.create(:name => "english", :code => "en")
+		@user.languages.reload
   end
 
   def test_should_require_login
@@ -109,31 +111,35 @@ class UserTest < Test::Unit::TestCase
 		assert_equal(@english, @user.default_language)
 	end
 	
-  def test_save_first_language
-    # Language.stubs(:find).returns(@english)
+  def test_set_first_language
     @user.first_language = @english.id
-    @user.save
-    assert_equal 1, @user.languages.size
-    assert_equal @english, @user.languages.first
-    assert_equal 1, @user.learnings.size
-    assert @user.learnings.first.is_first_language
+		@user.save
+		@user.reload
+    assert @user.languages.include?(@english)
+    assert_equal(@english, @user.learnings.select { |l| l.is_first_language }.first.language)
     # assert_equal @english, @user.learnings.first.language
   end
 
 	def test_add_language
-		assert_equal([], @user.languages)
+		langs_length = @user.languages.length
 		@user.add_language(@english)
-		@user.save
-		assert_equal([@english], @user.learnings.collect(&:language))
+		# the association has to be reloaded since the learnings -not the languages-
+		# association was modified
+		@user.languages.reload
+		assert_equal(langs_length + 1, @user.languages.length)
+		assert @user.languages.include?(@english)
+		# assert_equal([@english], @user.languages)
 	end
 
 	def test_should_not_allow_multiple_learnings_of_same_langauge
-		@user.learnings = []
 		@user.add_language(@english)
-		assert_raise(UserException) { @user.add_language(@english) }  
-
-		# TODO: the following should raise an exception! how do I check that in ruby?
-		# @user.add_language("en")
+		@user.languages.reload		
+		assert_nil @user.add_language(@english)
 	end
 
+	def test_hungarian_should_be_default_language_if_not_given_after_saved
+		# @user.save
+		# @user is saved when created in setup
+		assert_equal(@hungarian, @user.default_language)
+	end
 end

@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   attr_protected :id, :salt
   attr_accessor :password, :password_confirmation
 
+	after_save :set_default_language
+	
   def password=(pass)
     @password = pass
     self.salt = User.random_string(10) if !self.salt?
@@ -33,6 +35,8 @@ class User < ActiveRecord::Base
 
   def first_language=(id)
     language = Language.find(id)
+		raise UserError("Can't set nil as first_language") if language.nil?
+		learnings.select { |l| l.is_first_language }.each { |l| l.is_first_language = false }
     learnings.build(:language => language,
                           :start_date => Date.today,
                           :is_first_language => true)
@@ -49,6 +53,7 @@ class User < ActiveRecord::Base
 	
   def default_language=(id)
     language = Language.find(id)
+		learnings.select { |l| l.is_default_language }.each { |l| l.is_default_language = false }
     learnings.build(:language => language,
                           :start_date => Date.today,
                           :is_default_language => true)
@@ -59,18 +64,25 @@ class User < ActiveRecord::Base
   end
 
 	def add_language(lang, opts={})
-		raise UserException unless learnings.collect(&:language).select { |l| l == lang }.empty?
+		return unless languages.select { |l| l == lang }.empty?
 		learning_attrs = {:language => lang, :start_date => Date.today, 
 											:is_default_language => false, :is_first_language => false}.merge(opts)
-		learnings.build(learning_attrs)
+		learnings.create(learning_attrs)
 	end
 	
 	def add_as_default_language(lang)
+		raise UserException if lang.nil?
 		add_language(lang, :is_default_language => true)
 	end
 	
 	def add_as_first_language(lang)
 		add_language(lang, :is_first_language => false)
+	end
+	
+	def set_default_language
+		default_lang = Language.find_by_code("hu")
+		raise UserException if default_lang.nil?
+		add_as_default_language(default_lang) if learnings.select{ |l| l.is_default_language }.empty?
 	end
 	
   def self.random_string(len)
