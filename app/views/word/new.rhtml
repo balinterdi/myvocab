@@ -8,11 +8,14 @@
     <%= f.text_field :name %>
   <% end -%>
   <% content_tag :li do -%>
-    <!-- TODO: use u.collection_select to have a dropdown with all the possible languages -->
+	<!-- >
     <% fields_for :user do |u| %>
       <%= u.label :first_language, @user.first_language.name %>
       <%= u.text_field :first_language %>
     <% end %>
+	-->
+	<%= f.label :name, @user.first_language.name %>
+    <%= f.text_field :name %>	
   <% end -%>
   <% end -%>
   <%= submit_tag "Submit", :class => "submit_button" %>

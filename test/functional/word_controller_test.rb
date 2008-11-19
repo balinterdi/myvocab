@@ -23,7 +23,8 @@ class WordControllerTest < Test::Unit::TestCase
 			:password => 'bryanpass', :password_confirmation => 'bryanpass' }
 		@successful_login_opts = { :login => 'bryan', :password => 'bryanpass' }
 
-    user = stub_successful_login(@successful_register_opts)
+    @logged_user = stub_successful_login(@successful_register_opts)
+
     post :login, :user => @successful_login_opts
   end
 
@@ -33,8 +34,10 @@ class WordControllerTest < Test::Unit::TestCase
   end
 
   def test_get_new_page
-    @controller.stubs(:check_authentication).returns(true)
     # user = stub_successful_login(@successful_register_opts)
+    @controller.stubs(:check_authentication).returns(true)
+		@controller.stubs(:current_user_id).returns(@logged_user.id)
+
     get :new
     assert_response :success
     assert_template 'new'

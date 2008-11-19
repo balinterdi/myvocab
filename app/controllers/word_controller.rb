@@ -10,8 +10,9 @@ class WordController < ApplicationController
     # That would mean, in fact for the Word model to save synonyms,
     # something a railscast shows us how to do
     @word = Word.new
-    @user = User.find(:first, current_user_id)
-		@user.add_as_default_language(Language.find_by_code("en")) if @user.default_language.nil?		
+    @user = User.find(current_user_id)
+		@user.add_as_default_language(Language.find_by_code("en")) if @user.default_language.nil?
+		# render :text => "First language: #{@user.first_language.inspect} Default language: #{@user.default_language}" and return false
   end
 
   def create
