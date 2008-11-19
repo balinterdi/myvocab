@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   end
 
   def first_language
-    learnings.select { |l| l.is_first_language }.first
+		first_l = first_learning
+		first_l.language unless first_l.nil?
   end
 
   def first_language=(id)
@@ -37,15 +38,24 @@ class User < ActiveRecord::Base
                           :is_first_language => true)
   end
 
-  def default_language
-    learnings.select { |l| l.is_default_language }.first
-  end
+	def first_learning
+		learnings.select { |l| l.is_first_language }.first
+	end
 
+	def default_language
+		def_l = default_learning
+		def_l.language unless def_l.nil?
+	end
+	
   def default_language=(id)
     language = Language.find(id)
     learnings.build(:language => language,
                           :start_date => Date.today,
                           :is_default_language => true)
+  end
+
+  def default_learning
+    learnings.select { |l| l.is_default_language }.first
   end
 
 	def add_language(lang, opts={})

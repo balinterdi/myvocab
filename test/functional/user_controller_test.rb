@@ -162,7 +162,7 @@ class UserControllerTest < Test::Unit::TestCase
   def test_english_as_first_language_if_not_given
     post :register, :user => @successful_register_opts
     user = User.find_by_login(@successful_register_opts[:login])
-    assert_equal(@english.code, user.first_language.language.code)
+    assert_equal(@english, user.first_language)
   end
 
   def XXXtest_login_should_set_default_language
