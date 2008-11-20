@@ -1,21 +1,20 @@
 <%= error_messages_for :word %>
-<%# nice_form_for :word, nil, :action => "create", :title => "New word" do |f| %>
-<% form_for :word, @word, :url => { :action => "create" } do |f| %>
+<% nice_form_for :word, @word, :url  => {:action => "create"}, :title => "New word" do |f| %>
   <% content_tag :fieldset do -%>
   <%= content_tag :legend, "Add word" %>
   <% content_tag :ul do -%>
 	  <% content_tag :li do -%>
 		<%= f.label :name, @user.first_language.name %>
 	    <%= f.text_field :name %>
-		<%= hidden_field_tag "word[language]", @user.first_language.id %>
-		<%= hidden_field_tag "word[user]", @user.id %>
+		<%= hidden_field_tag "word[language_id]", @user.first_language.id %>
+		<%= hidden_field_tag "word[user_id]", @user.id %>
 	  <% end -%>
 	  <% fields_for "word[synonym_attributes]" do |syn_form| %>
 		  <% content_tag :li do -%>
 		    <%= syn_form.label :name, @user.default_language.name %>
 		    <%= syn_form.text_field :name %>
-			<%= hidden_field_tag "word[synonym_attributes][language]", @user.default_language.id %>
-			<%= hidden_field_tag "word[synonym_attributes][user]", @user.id %>
+			<%= hidden_field_tag "word[synonym_attributes][language_id]", @user.default_language.id %>
+			<%= hidden_field_tag "word[synonym_attributes][user_id]", @user.id %>
 		  <% end -%>
 	  <%- end %>
   <% end -%>

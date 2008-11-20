@@ -102,7 +102,7 @@ class WordTest < Test::Unit::TestCase
 	end
 	
 	def test_set_synonym_attributes		
-		@box.synonym_attributes = { :name => "doboz", :language => @hungarian.id, :user => @user.id }
+		@box.synonym_attributes = { :name => "doboz", :language_id => @hungarian.id, :user_id => @user.id }
 		@box.save
 		assert @box.synonyms.collect(&:name).include?("doboz")
 	end

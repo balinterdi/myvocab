@@ -20,8 +20,6 @@ class Word < ActiveRecord::Base
 	end
 
 	def synonym_attributes=(word_attributes)
-		word_attributes.merge!(:language => Language.find(word_attributes[:language]), 
-														:user => User.find(word_attributes[:user]))
 		meanings.build(:synonym => Word.new(word_attributes))
 	end
 

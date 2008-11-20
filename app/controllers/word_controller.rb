@@ -15,9 +15,9 @@ class WordController < ApplicationController
   end
 
   def create
-		params[:word].merge!(:language => Language.find(params[:word][:language]))
-		params[:word].merge!(:user => User.find(params[:word][:user]))
-		
+		# params[:word].merge!(:language => Language.find(params[:word][:language]))
+		# params[:word].merge!(:user => User.find(params[:word][:user]))
+		# 		
 	  @word = Word.new(params[:word])
 		if @word.save
 			flash[:notice] = "words successfully created."
@@ -28,9 +28,6 @@ class WordController < ApplicationController
   end
 
   def index
-    ##FIXME: Paginator is removed from Rails 2.0.2, so another solution must be found
-    # paginator described here:
-    # http://www.nullislove.com/2007/05/24/pagination-in-rails/
     @words = Word.find(:all, :conditions => [ "user_id = ?", current_user_id])
   end
 
