@@ -9,20 +9,22 @@ class WordController < ApplicationController
     # is not yet present as a meaning
     # That would mean, in fact for the Word model to save synonyms,
     # something a railscast shows us how to do
-    @word = Word.new
     @user = User.find(current_user_id)
 		@user.add_as_default_language(Language.find_by_code("en")) if @user.default_language.nil?
-		# render :text => "First language: #{@user.first_language.inspect} Default language: #{@user.default_language}" and return false
+		@word = Word.new
   end
 
   def create
-    sql = ActiveRecord::Base.connection()
-    @w1 = Word.new(params[:word1])
-    @w2 = Word.new(params[:word2])
-    # if request.post?
-    if @w1.save
-    end
-    redirect_to :action => "new"
+		params[:word].merge!(:language => Language.find(params[:word][:language]))
+		params[:word].merge!(:user => User.find(params[:word][:user]))
+		
+	  @word = Word.new(params[:word])
+		if @word.save
+			flash[:notice] = "words successfully created."
+			redirect_to words_for_user_path
+		else
+			render :action => "new"
+		end  
   end
 
   def index
