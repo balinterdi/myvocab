@@ -1,5 +1,5 @@
 class Word < ActiveRecord::Base
-  has_many :users
+  belongs_to :user
   has_many :meanings
   has_many :synonyms, :through => :meanings, :class_name => 'Word'
   belongs_to :language
@@ -10,6 +10,14 @@ class Word < ActiveRecord::Base
   # - an answer to my rails forum question
   # - http://blog.hasmanythrough.com/2006/4/21/self-referential-through
   validates_presence_of :name, :language
+
+	def synonym?(word)
+		synonyms.include?(word)
+	end
+	
+	def synonym=(word)
+		meanings.build(:synonym => word)
+	end
 
   def find_words_for_language(a_language)
     find_synonyms { |w| w.language.code == a_language.code }
@@ -22,11 +30,6 @@ class Word < ActiveRecord::Base
   def find_foreign_synonyms
     find_synonyms { |w| w.language.code != language.code }
   end
-
-  # Q: so if calling protected methods is also not allowed from tests
-  # how do I test them?
-  # A: I suppose I don't since I only need to test methods that are available for
-  # the "outside world"?
 
   def find_synonyms(&blk)
     return synonyms unless block_given?

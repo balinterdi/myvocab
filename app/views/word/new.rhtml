@@ -4,18 +4,12 @@
   <%= content_tag :legend, "Add word" %>
   <% content_tag :ul do -%>
   <% content_tag :li do -%>
-    <%= f.label :name, @user.default_language.name %>
-    <%= f.text_field :name %>
-  <% end -%>
-  <% content_tag :li do -%>
-	<!-- >
-    <% fields_for :user do |u| %>
-      <%= u.label :first_language, @user.first_language.name %>
-      <%= u.text_field :first_language %>
-    <% end %>
-	-->
 	<%= f.label :name, @user.first_language.name %>
     <%= f.text_field :name %>	
+  <% end -%>
+  <% content_tag :li do -%>
+    <%= f.label :name, @user.default_language.name %>
+    <%= f.text_field :name %>
   <% end -%>
   <% end -%>
   <%= submit_tag "Submit", :class => "submit_button" %>

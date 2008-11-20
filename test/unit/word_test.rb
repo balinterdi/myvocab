@@ -4,16 +4,22 @@ class WordTest < Test::Unit::TestCase
   fixtures :languages
   
   def setup
-    #@english = Language.new( :name => "English", :code => "en" )
-    #@french = Language.new( :name => "French", :code => "fr" )    
+		user_attributes = {
+      :email => 'john@company.com',
+      :login => 'john',
+      :password => 'passtoguess',
+      :password_confirmation => 'passtoguess' }
+		@user = User.create(user_attributes)
+
     @english = Language.find_by_code("en")
     @french = Language.find_by_code("fr")
     @hungarian = Language.find_by_code("hu")
     
-    @refuse = Word.new( :name => 'refuse', :language => @english )
-    @decline = Word.new( :name => 'decline', :language => @english )
-    @refuser = Word.new( :name => 'refuser', :language => @french )
-    @box = Word.new( :name => 'box', :language => @english )
+    @refuse = Word.create( :name => 'refuse', :language => @english, :user => @user )
+    @decline = Word.create( :name => 'decline', :language => @english, :user => @user )
+    @refuser = Word.create( :name => 'refuser', :language => @french, :user => @user )
+    @box = Word.create( :name => 'box', :language => @english, :user => @user )
+		@boite = Word.create( :name => 'boite', :language => @french, :user => @user )
     @refuse.stubs(:synonyms).returns([@decline, @refuser])
   end
 
@@ -85,4 +91,14 @@ class WordTest < Test::Unit::TestCase
     assert_equal([], syns)
   end
 
+	def test_synonym?
+		assert @refuse.synonym?(@decline)
+	end
+
+	def test_set_synonym
+		@box.synonym = @boite
+		@box.save
+		assert @box.synonym?(@boite)
+	end
+	
 end
