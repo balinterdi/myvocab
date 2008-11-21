@@ -28,7 +28,8 @@ class WordController < ApplicationController
   end
 
   def index
-    @words = Word.find(:all, :conditions => [ "user_id = ?", current_user_id])
+		user = User.find(current_user_id)
+		@word_pairs = user.get_word_pairs(user.first_language, user.default_language)
   end
 
   def search

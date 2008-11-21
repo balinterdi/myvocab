@@ -85,6 +85,21 @@ class User < ActiveRecord::Base
 		add_as_default_language(default_lang) if learnings.select{ |l| l.is_default_language }.empty?
 	end
 	
+	def get_words_in_language(lang)
+		words.select { |w| w.language == lang }
+	end
+
+	def get_word_pairs(from_lang, to_lang)
+		# puts "get words in language: #{get_words_in_language(from_lang).inspect}"
+		pairs = Array.new
+		word_pairs = get_words_in_language(from_lang).each do |from_word|
+			# puts "Word: #{from_word.inspect} Synonyms: #{from_word.synonyms.inspect}"
+			to_word = from_word.find_first_synonym_in_language(to_lang)
+			pairs << [from_word, to_word] unless to_word.nil?
+		end
+		pairs
+	end
+	
   def self.random_string(len)
     rnd_string = []
     chars = ('a'..'z').to_a + (0..9).to_a

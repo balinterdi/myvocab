@@ -35,9 +35,21 @@ class Word < ActiveRecord::Base
     find_synonyms { |w| w.language.code != language.code }
   end
 
+	def find_synonyms_in_language(lang)
+		find_synonyms { |w| w.language == lang }
+	end
+
+	def find_first_synonym_in_language(lang)
+		find_synonyms_in_language(lang).first
+	end
+	
   def find_synonyms(&blk)
     return synonyms unless block_given?
     return synonyms.select(&blk)
   end
 
+	# def find_synonyms_in_language_and_user(language_id, user_id)
+	# 	Find
+	# end
+	
 end

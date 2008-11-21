@@ -18,6 +18,7 @@ class WordTest < Test::Unit::TestCase
     @refuse = Word.create( :name => 'refuse', :language => @english, :user => @user )
     @decline = Word.create( :name => 'decline', :language => @english, :user => @user )
     @refuser = Word.create( :name => 'refuser', :language => @french, :user => @user )
+		@visszautasit = Word.create( :name => 'visszautasit', :language => @hungarian, :user => @user )
     @box = Word.create( :name => 'box', :language => @english, :user => @user )
 		@boite = Word.create( :name => 'boite', :language => @french, :user => @user )
     @refuse.stubs(:synonyms).returns([@decline, @refuser])
@@ -91,6 +92,18 @@ class WordTest < Test::Unit::TestCase
     assert_equal([], syns)
   end
 
+	def test_find_synonyms_in_language
+		@refuser.synonym = @refuse
+		@refuser.synonym = @decline
+		@refuser.synonym = @visszautasit
+		@refuser.save
+		eng_synonyms = @refuser.find_synonyms_in_language(@english)
+		assert eng_synonyms.include?(@refuse)
+		assert eng_synonyms.include?(@decline)
+		assert !eng_synonyms.include?(@box)
+		assert !eng_synonyms.include?(@visszautasit)
+	end
+	
 	def test_synonym?
 		assert @refuse.synonym?(@decline)
 	end
@@ -106,5 +119,11 @@ class WordTest < Test::Unit::TestCase
 		@box.save
 		assert @box.synonyms.collect(&:name).include?("doboz")
 	end
-	
+
+	# def test_get_word_pair_in_language
+	# 	eng_synonyms = @refuser.find_synonyms(@english)
+	# 	asssert eng_synoyms.include?(@refuse)
+	# 	asssert eng_synoyms.include?(@decline)		
+	# end
+		
 end

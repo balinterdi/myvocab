@@ -1,18 +1,19 @@
 <%= content_tag :h2, "All words" %>
 <div id="word-list" class="word_list">
 <ul>
-<% @words.each do |wp| %>
+<% @word_pairs.each do |wp| %>
   <li>
     <div class="word_marker">
-      <%= content_tag :div, "English", :class => "dict_left" %>
-      <%= content_tag :div, "Hungarian", :class => "dict_right" %>
+	  <%= content_tag :div, wp[0].name, :class => "dict_left" %>
+      <%= content_tag :div, wp[1].name , :class => "dict_right" %>
       <div class="actions">
-        <%= link_to "edit", :controller => "word", :action => "edit" %>
-        <%= link_to "delete", :controller => "word", :action => "delete" %>
+	<!--
+        <%= link_to "edit", :controller => "word", :action => "edit", :id => wp[0].id %>
+        <%= link_to "delete", :controller => "word", :action => "delete" %> %>
+	-->
       </div>
     </div>
   </li>
 <% end %>
 </ul>
-
 </div>

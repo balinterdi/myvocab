@@ -5,6 +5,7 @@ class UserTest < Test::Unit::TestCase
   def setup
 	  @english = Language.find_by_code("en")
 		@hungarian = Language.find_by_code("hu")
+		@french = Language.find_by_code("fr")
     user_attributes = {
       :email => 'john@company.com',
       :login => 'john',
@@ -13,6 +14,14 @@ class UserTest < Test::Unit::TestCase
     user_with_first_language_attributes = user_attributes.merge({:first_language_id => 1})
     @user = User.create(user_attributes)
 		@user.languages.reload
+		
+		@refuse = Word.create( :name => 'refuse', :language => @english, :user => @user )
+    @decline = Word.create( :name => 'decline', :language => @english, :user => @user )
+    @refuser = Word.create( :name => 'refuser', :language => @french, :user => @user )
+    @box = Word.create( :name => 'box', :language => @english, :user => @user )
+		@boite = Word.create( :name => 'boite', :language => @french, :user => @user )
+    # @refuse.stubs(:synonyms).returns([@decline, @refuser])
+    
   end
 
   def test_should_require_login
@@ -128,7 +137,6 @@ class UserTest < Test::Unit::TestCase
 		@user.languages.reload
 		assert_equal(langs_length + 1, @user.languages.length)
 		assert @user.languages.include?(@english)
-		# assert_equal([@english], @user.languages)
 	end
 
 	def test_should_not_allow_multiple_learnings_of_same_langauge
@@ -139,7 +147,24 @@ class UserTest < Test::Unit::TestCase
 
 	def test_hungarian_should_be_default_language_if_not_given_after_saved
 		# @user.save
-		# @user is saved when created in setup
+		# @user is already saved when created in setup
 		assert_equal(@hungarian, @user.default_language)
 	end
+	
+	def test_get_words_in_language
+		my_words = @user.get_words_in_language(@english)
+		assert my_words.include?(@box)
+		assert my_words.include?(@refuse)
+		assert my_words.include?(@decline)
+	end
+	
+	def test_get_word_pairs
+		@refuse.synonym = @refuser
+		@box.synonym = @boite
+		@refuse.save ; @box.save; #@refuser.save; @refuse.synonyms.reload; @box.synonyms.reload		
+		word_pairs = @user.get_word_pairs(@english, @french)
+		assert word_pairs.include?([@refuse, @refuser])
+		assert word_pairs.include?([@box, @boite])
+	end
+	
 end
